@@ -1,0 +1,33 @@
+//
+//  AppCongfigure.swift
+//  SwiftBilibili
+//
+//  Created by 罗文 on 2018/1/22.
+//  Copyright © 2018年 罗文. All rights reserved.
+//
+
+import UIKit
+
+let kScreenWidth = UIScreen.main.bounds.width
+let kScreenHeight = UIScreen.main.bounds.height
+let kScreenRatio = kScreenHeight/736.f //以8ps为标准
+
+let kToastBottomMaxSpace = 560.f * kScreenRatio
+let kToastBottomCenterSpace = 420.f * kScreenRatio
+let kBannerHeight = 120.f
+let kNormalItemHeight = 200.f
+let kAdItemHeight = 170.f
+let kLiveItemHeight = 180.f
+let kShadowImageHeight = 50.f
+let kTipCellHeight = 30.f
+let kCornerRadius = 6.f
+let kCollectionItemPadding = 10.f
+let kDislikeViewMaxWidth = 330.f
+let kDislikeViewMinWidth = 180.f
+let kDislikeCellHeight = 60.f
+let kDislikeFooterHeight = 150.f
+let kLivePartitionRefreshRotationTime: Double = 0.5
+let kTimeoutIntervalForRequest: TimeInterval = 10
+let kRecommendRecallDislikeMinute = 2
+
+let isIphoneX = kScreenWidth == 375.f && kScreenHeight == 812.f

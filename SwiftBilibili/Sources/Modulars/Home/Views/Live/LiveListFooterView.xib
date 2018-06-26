@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="slN-Sm-hY4" customClass="LiveListFooterView" customModule="SwiftBilibili" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="628" height="188"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyV-Bh-J36" customClass="BilibiliButton" customModule="SwiftBilibili" customModuleProvider="target">
+                    <rect key="frame" x="264" y="15" width="100" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="KQn-9l-ORI"/>
+                        <constraint firstAttribute="width" constant="100" id="PYw-D0-FWK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="点击换一换" image="home_refresh">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="startSwitch:" destination="slN-Sm-hY4" eventType="touchUpInside" id="TBa-YL-fDC"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss8-42-Vx8">
+                    <rect key="frame" x="0.0" y="118" width="628" height="70"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezb-d3-JrW">
+                            <rect key="frame" x="15" y="15" width="598" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="xfb-st-8rJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="全部直播"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Ezb-d3-JrW" firstAttribute="leading" secondItem="ss8-42-Vx8" secondAttribute="leading" constant="15" id="L4B-Db-u90"/>
+                        <constraint firstAttribute="height" constant="70" id="VFm-0C-tO0"/>
+                        <constraint firstAttribute="trailing" secondItem="Ezb-d3-JrW" secondAttribute="trailing" constant="15" id="kEb-Zu-dXK"/>
+                        <constraint firstItem="Ezb-d3-JrW" firstAttribute="centerY" secondItem="ss8-42-Vx8" secondAttribute="centerY" id="ouo-XN-we2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XyV-Bh-J36" firstAttribute="top" secondItem="a3f-f2-3r0" secondAttribute="top" constant="15" id="HF7-8l-ao1"/>
+                <constraint firstItem="a3f-f2-3r0" firstAttribute="bottom" secondItem="ss8-42-Vx8" secondAttribute="bottom" id="Jhp-2V-WY2"/>
+                <constraint firstItem="XyV-Bh-J36" firstAttribute="centerX" secondItem="a3f-f2-3r0" secondAttribute="centerX" id="jEd-D0-7Xn"/>
+                <constraint firstItem="a3f-f2-3r0" firstAttribute="trailing" secondItem="ss8-42-Vx8" secondAttribute="trailing" id="jq4-J7-Xkd"/>
+                <constraint firstItem="ss8-42-Vx8" firstAttribute="leading" secondItem="a3f-f2-3r0" secondAttribute="leading" id="ybG-iH-SRd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="a3f-f2-3r0"/>
+            <connections>
+                <outlet property="allLiveButton" destination="Ezb-d3-JrW" id="eeI-9j-GJd"/>
+                <outlet property="allLiveView" destination="ss8-42-Vx8" id="dHk-Cm-95c"/>
+                <outlet property="switchButton" destination="XyV-Bh-J36" id="njV-8q-awc"/>
+            </connections>
+            <point key="canvasLocation" x="24" y="-113"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="home_refresh" width="11" height="9"/>
+    </resources>
+</document>

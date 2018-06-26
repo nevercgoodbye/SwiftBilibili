@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ecp-3L-SIZ" customClass="HomeNavBar" customModule="SwiftBilibili" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="632" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igv-mC-GMX">
+                    <rect key="frame" x="10" y="110" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Hf0-Sn-brR"/>
+                        <constraint firstAttribute="height" constant="20" id="KR3-3u-MZZ"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="home_avatar"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imy-tY-QZf">
+                    <rect key="frame" x="50" y="107" width="492" height="25"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="aae-wg-1L0"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwH-QY-4Pw">
+                    <rect key="frame" x="597" y="110" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="2wf-jR-jVb"/>
+                        <constraint firstAttribute="width" constant="20" id="mK8-28-CsZ"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="article_share_ico"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCO-U1-4kL">
+                    <rect key="frame" x="562" y="110" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="TwD-Ua-5re"/>
+                        <constraint firstAttribute="width" constant="20" id="zzo-Gs-wuO"/>
+                    </constraints>
+                    <state key="normal" image="article_img_load"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_search_white" translatesAutoresizingMaskIntoConstraints="NO" id="fgr-mi-WKr">
+                    <rect key="frame" x="60" y="112" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="DBN-pE-J4m"/>
+                        <constraint firstAttribute="width" constant="15" id="rgy-u9-6w1"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fgr-mi-WKr" firstAttribute="centerY" secondItem="imy-tY-QZf" secondAttribute="centerY" id="3RP-qM-uvX"/>
+                <constraint firstItem="igv-mC-GMX" firstAttribute="centerY" secondItem="tAd-c9-RIK" secondAttribute="centerY" id="85I-nc-Bhk"/>
+                <constraint firstItem="imy-tY-QZf" firstAttribute="centerY" secondItem="igv-mC-GMX" secondAttribute="centerY" id="8Xk-lC-Lfl"/>
+                <constraint firstItem="fgr-mi-WKr" firstAttribute="leading" secondItem="imy-tY-QZf" secondAttribute="leading" constant="10" id="F0b-Bt-RcZ"/>
+                <constraint firstItem="zwH-QY-4Pw" firstAttribute="leading" secondItem="vCO-U1-4kL" secondAttribute="trailing" constant="15" id="IUi-VY-rgd"/>
+                <constraint firstItem="tAd-c9-RIK" firstAttribute="trailing" secondItem="zwH-QY-4Pw" secondAttribute="trailing" constant="15" id="L3C-8z-7Of"/>
+                <constraint firstItem="igv-mC-GMX" firstAttribute="leading" secondItem="tAd-c9-RIK" secondAttribute="leading" constant="10" id="M49-vv-XMf"/>
+                <constraint firstItem="zwH-QY-4Pw" firstAttribute="centerY" secondItem="igv-mC-GMX" secondAttribute="centerY" id="NI5-HD-Ymv"/>
+                <constraint firstItem="vCO-U1-4kL" firstAttribute="centerY" secondItem="igv-mC-GMX" secondAttribute="centerY" id="h0g-cf-JeN"/>
+                <constraint firstItem="vCO-U1-4kL" firstAttribute="leading" secondItem="imy-tY-QZf" secondAttribute="trailing" constant="20" id="k6O-cX-MAr"/>
+                <constraint firstItem="imy-tY-QZf" firstAttribute="leading" secondItem="igv-mC-GMX" secondAttribute="trailing" constant="20" id="zsH-Ow-jg4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="tAd-c9-RIK"/>
+            <point key="canvasLocation" x="95" y="-82"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="article_img_load" width="20" height="20"/>
+        <image name="article_share_ico" width="20" height="20"/>
+        <image name="home_avatar" width="33" height="33"/>
+        <image name="home_search_white" width="22" height="22"/>
+    </resources>
+</document>

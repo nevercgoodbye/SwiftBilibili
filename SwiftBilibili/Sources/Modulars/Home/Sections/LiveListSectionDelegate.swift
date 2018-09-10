@@ -13,18 +13,16 @@ final class LiveListSectionDelegate: SectionDelegateType {
 
     typealias SectionReactor = LiveListSectionReactor
     
-    fileprivate struct Reusable {
+    private struct Reusable {
         static let avCell = ReusableCell<LiveAvCell>()
-        static let bannerCell = ReusableCell<LiveBannerCell>()
-        static let beautyCell = ReusableCell<LiveBeautyCell>()
+        static let hourRankCell = ReusableCell<LiveHourRankCell>()
         static let footerView = ReusableView<LiveListFooterView>(nibName:"LiveListFooterView")
         static let headerView = ReusableView<LiveListHeaderView>()
     }
     
     func registerReusables(to collectionView: UICollectionView) {
         collectionView.register(Reusable.avCell)
-        collectionView.register(Reusable.bannerCell)
-        collectionView.register(Reusable.beautyCell)
+        collectionView.register(Reusable.hourRankCell)
         collectionView.register(Reusable.footerView, kind: UICollectionElementKindSectionFooter)
         collectionView.register(Reusable.headerView, kind: UICollectionElementKindSectionHeader)
     }
@@ -42,17 +40,8 @@ final class LiveListSectionDelegate: SectionDelegateType {
                 cell.reactor = cellReactor
             }
             return cell
-        case let .banner(cellReactor):
-            let cell = collectionView.dequeue(Reusable.bannerCell, for: indexPath)
-            if cell.reactor !== cellReactor {
-                cell.reactor = cellReactor
-            }
-            return cell
-        case let .beauty(cellReactor):
-            let cell = collectionView.dequeue(Reusable.beautyCell, for: indexPath)
-            if cell.reactor !== cellReactor {
-                cell.reactor = cellReactor
-            }
+        case .hourRank:
+            let cell = collectionView.dequeue(Reusable.hourRankCell, for: indexPath)
             return cell
         }
     }
@@ -60,20 +49,20 @@ final class LiveListSectionDelegate: SectionDelegateType {
     func supplementaryView(
         collectionView: UICollectionView,
         indexPath: IndexPath,
-        section:LiveListViewSection,
-        sectionCount:Int,
+        sectionReactor:SectionReactor,
+        totalCount:Int,
         kind:String
         ) -> UICollectionReusableView {
         
         switch kind {
         case UICollectionElementKindSectionFooter:
             let view = collectionView.dequeue(Reusable.footerView, kind: kind, for: indexPath)
-            view.partitionType = section.header?.partitionType
-            view.allLiveView.isHidden = indexPath.section != sectionCount - 1
+            view.reloadData(headerModel:sectionReactor.currentState.module.module_info)
+            view.allLiveView.isHidden = indexPath.section != totalCount - 1
             return view
         case UICollectionElementKindSectionHeader:
             let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
-            view.reloadData(headerModel:section.header,bannerModels:section.banners,starShows:section.starShows)
+            view.reloadData(headerModel:sectionReactor.currentState.module.module_info,bannerModels:sectionReactor.bannerModels, regionModels: sectionReactor.regionModels, tagModels: sectionReactor.tagModels ?? [])
             return view
         default:
             return collectionView.emptyView(for: indexPath, kind: kind)
@@ -81,51 +70,46 @@ final class LiveListSectionDelegate: SectionDelegateType {
     }
 
     func cellSize(
-        collectionView: UICollectionView,
-        indexPath: IndexPath,
-        sectionItem: SectionItem
-        ) -> CGSize {
+         collectionView: UICollectionView,
+         indexPath: IndexPath,
+         sectionItem: SectionItem
+         ) -> CGSize {
         
-        switch sectionItem {
-        case .av,.beauty:
-            return CGSize(width: (kScreenWidth - 3*kCollectionItemPadding)/2, height: kLiveItemHeight)
-        case let .banner(cellReactor):
-            return Reusable.bannerCell.class.size(width: kScreenWidth - 2*kCollectionItemPadding, reactor: cellReactor)
+         switch sectionItem {
+         case .av:
+            return CGSize(width: kScreenWidth/2, height: kLiveItemHeight)
+         case .hourRank:
+            return CGSize(width: kScreenWidth, height: kLiveItemHeight)
         }
     }
     
     func footerSize(
-        collectionView: UICollectionView,
-        section: Int,
-        viewSection: LiveListViewSection,
-        sectionCount:Int
-        ) -> CGSize {
+         collectionView: UICollectionView,
+         section: Int,
+         sectionReactor:SectionReactor,
+         totalCount:Int
+         ) -> CGSize {
         
-        guard let _ = viewSection.header?.partitionType else {
+        if sectionReactor.currentState.module.module_info.id == hourRankModuleId {
             return .zero
         }
-
-        if section == sectionCount - 1 {
-            return CGSize(width: kScreenWidth, height: 140)
-        }
-        return CGSize(width: kScreenWidth, height: 60)
+        
+         if section == totalCount - 1 {
+            return CGSize(width: kScreenWidth, height: 160)
+         }
+         return CGSize(width: kScreenWidth, height: 50)
     }
     
     func headerSize(
-        collectionView: UICollectionView,
-        section: Int,
-        viewSection: LiveListViewSection,
-        isShowStar: Bool
-        ) -> CGSize {
+         collectionView: UICollectionView,
+         section: Int,
+         viewSection: LiveListViewSection
+         ) -> CGSize {
         
-        guard let _ = viewSection.header?.partitionType else {
-            return .zero
-        }
-        
-        if section == 0 {
-            return isShowStar ? CGSize(width: kScreenWidth, height: 400) : CGSize(width: kScreenWidth, height: 180)
-        }
-        return CGSize(width: kScreenWidth, height: 40)
+         if section == 0 {
+            return CGSize(width: kScreenWidth, height: 340)
+         }
+         return CGSize(width: kScreenWidth, height: 40)
     }
     
 }

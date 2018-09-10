@@ -31,7 +31,6 @@ struct AppDependency {
     typealias OpenURLHandler = (_ url: URL, _ options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool
     
     let window: UIWindow
-    let navigator: Navigator
     let configureSDKs: () -> Void
     let configureAppearance: () -> Void
     let configureUserAgent: () -> Void
@@ -49,7 +48,6 @@ final class CompositionRoot {
         window.backgroundColor = .white
         window.makeKeyAndVisible()
 
-        
         URLNavigationMap.initialize(navigator: navigator)
         
         let homeService = HomeService(networking: HomeNetworking())
@@ -74,7 +72,6 @@ final class CompositionRoot {
         
         return AppDependency(
             window: window,
-            navigator: navigator,
             configureSDKs: self.configureSDKs,
             configureAppearance: self.configureAppearance,
             configureUserAgent: self.configureUserAgent,
@@ -103,16 +100,6 @@ final class CompositionRoot {
         ToastView.appearance().font = Font.SysFont.sys_15
         ToastView.appearance().textColor = UIColor.db_white
         
-        // 设置导航栏默认的背景颜色
-        WRNavigationBar.defaultNavBarBarTintColor = UIColor.db_pink
-        // 设置导航栏所有按钮的默认颜色
-        WRNavigationBar.defaultNavBarTintColor = UIColor.db_white
-        // 设置导航栏标题默认颜色
-        WRNavigationBar.defaultNavBarTitleColor = UIColor.db_white
-        // 统一设置状态栏样式
-        WRNavigationBar.defaultStatusBarStyle = .lightContent
-        // 如果需要设置导航栏底部分割线隐藏，可以在这里统一设置
-        WRNavigationBar.defaultShadowImageHidden = true
      }
     
      static func configureUserAgent() {

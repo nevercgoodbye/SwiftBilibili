@@ -63,7 +63,7 @@ final class DramaReviewCell: BaseCollectionViewCell,View {
         $0.setTitleColor(.db_lightGray, for: .normal)
         $0.titleLabel?.font = Font.SysFont.sys_12
         $0.isUserInteractionEnabled = false
-        $0.setImage(Image.Home.play, for: .normal)
+        $0.setImage(Image.Home.playTime, for: .normal)
         $0.imageSize = CGSize(width:12, height: 12)
     }
     
@@ -120,7 +120,7 @@ final class DramaReviewCell: BaseCollectionViewCell,View {
     
     class func size(reactor: DramaReviewCellReactor) -> CGSize {
         
-        var cellHeight: CGFloat = 0
+        var cellHeight: CGFloat = 2*kCollectionItemPadding
         
         cellHeight += Metric.coverImageViewHeight
         cellHeight += Metric.coverImageViewTop
@@ -137,7 +137,7 @@ final class DramaReviewCell: BaseCollectionViewCell,View {
             make.width.equalTo(Metric.coverImageViewWidth)
             make.height.equalTo(Metric.coverImageViewHeight)
             make.right.equalTo(-kCollectionItemPadding)
-            make.top.equalToSuperview()
+            make.top.equalTo(2*kCollectionItemPadding)
         }
         
         titleLabel.snp.makeConstraints { (make) in

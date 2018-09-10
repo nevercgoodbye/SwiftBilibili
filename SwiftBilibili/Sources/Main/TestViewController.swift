@@ -23,14 +23,6 @@ class TestViewController: UIViewController {
 
         self.view.backgroundColor = UIColor.purple
         
-        navBarBarTintColor = UIColor.db_pink
-        
-        // 设置初始导航栏透明度
-        navBarBackgroundAlpha = 0
-        
-        // 设置导航栏按钮和标题颜色
-        navBarTintColor = .white
-        
         
         // Do any additional setup after loading the view.
     }

@@ -10,9 +10,9 @@ import UIKit
 
 final class LiveListHeaderView: UICollectionReusableView {
     
-    private var headerModel: LivePartitionHeaderModel?
+    private var headerModel: LiveHeaderModel?
     
-    let starShowView = LiveListStarShowView.loadFromNib()
+    let tagView = LiveTagView()
     
     let bannerView = BilibiliBannerView().then{
         $0.backgroundColor = .clear
@@ -25,68 +25,40 @@ final class LiveListHeaderView: UICollectionReusableView {
         super.init(frame: frame)
     
         addSubview(bannerView)
-        addSubview(starShowView)
+        addSubview(tagView)
         addSubview(partitionHeaderView)
     
-        partitionHeaderView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: {[unowned self] (_) in
-            
-             guard let header = self.headerModel else { return }
-              
-             switch header.partitionType {
-             case .recommend:
-                BilibiliRouter.push(.live_recommend)
-             case .beauty:
-                BilibiliRouter.push(.live_beauty)
-             default:
-                BilibiliRouter.push(BilibiliPushType.live_partition(id: header.partitionType.rawValue))
-             }
-        })
-            .disposed(by: rx.disposeBag)
+        self.backgroundColor = UIColor.db_white
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func reloadData(headerModel:LivePartitionHeaderModel?,bannerModels:[LiveListBannerModel]?,starShows:[LiveStarShowModel]?) {
+    func reloadData(headerModel:LiveHeaderModel?,bannerModels:[LiveAvModel]?,regionModels:[LiveAvModel]?,tagModels:[LiveTagModel]) {
         
         guard let headerModel = headerModel else { return }
         
         self.headerModel = headerModel
         
-        if headerModel.partitionType == .recommend {
+        if headerModel.count != nil {
             bannerView.isHidden = false
-            starShowView.isHidden = starShows == nil
+            tagView.isHidden = false
         }else{
             bannerView.isHidden = true
-            starShowView.isHidden = true
+            tagView.isHidden = true
         }
 
-        let num = "\(headerModel.count)"
-        
-        let arrowName = headerModel.partitionType == .recommend ? "当前共有\(num)个主播" : "查看更多"
-        
-        let arrowNameAtt = NSMutableAttributedString(string: arrowName)
-        
-        if headerModel.partitionType == .recommend {
-            
-            let range = (arrowName as NSString).range(of: num)
-            arrowNameAtt.addAttributes([NSAttributedStringKey.foregroundColor:UIColor.db_pink], range: range)
-        }
-
-        
-        partitionHeaderView.reloadData(iconUrl: headerModel.sub_icon.src, partitionName: headerModel.name, arrowName: arrowNameAtt)
+        partitionHeaderView.reloadLiveData(headerModel: headerModel)
         
         if let bannerModels = bannerModels {
-            bannerView.reloadData(bannerModels: bannerModels.map{BilibiliBannerModel(imageUrl: $0.img, title: $0.title, link: $0.link, isAd: false)})
+            bannerView.reloadData(bannerModels: bannerModels.map{BilibiliBannerModel(imageUrl: $0.pic ?? "", title: $0.title ?? "", link: $0.link ?? "", isAd: false)})
         }
         
-        if let starShows = starShows {
-            starShowView.starShows = starShows
-            starShowView.collectionView.reloadData()
+        if let regionModels = regionModels {
+            tagView.setupData(liveModels: regionModels, tagModels: tagModels)
         }
+        
     }
 
     override func layoutSubviews() {
@@ -95,22 +67,20 @@ final class LiveListHeaderView: UICollectionReusableView {
         bannerView.snp.makeConstraints { (make) in
             make.left.equalTo(kCollectionItemPadding)
             make.right.equalTo(-kCollectionItemPadding)
-            make.top.equalTo(10)
+            make.top.equalTo(kCollectionItemPadding)
             make.height.equalTo(kBannerHeight)
         }
         
-        partitionHeaderView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(-10)
-            make.left.equalTo(kCollectionItemPadding)
-            make.right.equalTo(-kCollectionItemPadding)
-            make.height.equalTo(30)
+        tagView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(bannerView.snp.bottom)
+            make.height.equalTo(170)
         }
         
-        starShowView.snp.makeConstraints { (make) in
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.top.equalTo(bannerView.snp.bottom).offset(30)
-            make.height.equalTo(190)
+        partitionHeaderView.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(40)
         }
     }
 }

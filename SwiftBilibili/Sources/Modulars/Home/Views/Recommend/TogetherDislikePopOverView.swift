@@ -59,8 +59,6 @@ final class TogetherDislikePopOverView: PopOverView<PopOverViewCell,ActionData,U
            footer.reloadData(upName: data.upName, zoneName: data.zoneName, remarkName: data.remarkName)
            footer.dislikeTapSubject.bind(to: self.dislikeTapSubject).disposed(by: self.rx.disposeBag)
         }
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -65,7 +65,10 @@ final class DramaViewController: BaseCollectionViewController,View {
 //        self.view.backgroundColor = UIColor.db_pink
 //        collectionView.cornerRadius = kCornerRadius
 //        collectionView.frame = self.view.bounds
-        collectionView.backgroundColor = UIColor.white
+        //collectionView.backgroundColor = UIColor.white
+        
+        self.collectionView.enableDirection = true
+        
         setupRefreshHeader(collectionView) {[unowned self] in
             self.reactor?.action.onNext(.refresh)
         }
@@ -104,18 +107,6 @@ final class DramaViewController: BaseCollectionViewController,View {
             })
             .disposed(by: disposeBag)
         
-        reactor.state.map{$0.isSuccess}
-            .subscribe(onNext: {[unowned self] (isSuccess) in
-                
-                (self.collectionView.header?.animator as? RabbitHeaderAnimator)?.isSuccess = isSuccess
-                
-                if !isSuccess {
-                    self.stopRefresh()
-                    self.showNetErrorView()
-                }
-            })
-            .disposed(by: disposeBag)
-        
         collectionView.rx.itemSelected(dataSource: dataSource)
             .subscribe(onNext: { (sectionItem) in
                 
@@ -124,8 +115,8 @@ final class DramaViewController: BaseCollectionViewController,View {
                     switch item {
                     case .vertical(let cellReactor):
                        BilibiliToaster.show(cellReactor.currentState.title)
-                    case .review(let cellReactor):
-                       BilibiliToaster.show(cellReactor.currentState.title)
+//                    case .review(let cellReactor):
+//                       BilibiliToaster.show(cellReactor.currentState.title)
                     case .edit(let cellReactor):
                        BilibiliToaster.show(cellReactor.currentState.title)
                     }
@@ -149,27 +140,17 @@ extension DramaViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let type = dataSource[section].headerModel!.type
-        
-        if type == .review {
-            return UIEdgeInsets.zero
-        }
-        return UIEdgeInsets(top: 0, left: kCollectionItemPadding, bottom: 0, right: kCollectionItemPadding)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return kCollectionItemPadding
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.f
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        return dramaSectionDelegate.headerSize(collectionView: collectionView,section: dataSource[section],sectionCount: dataSource.sectionModels.count)
+        return dramaSectionDelegate.headerSize(collectionView: collectionView,section: section)
     }
 }
 

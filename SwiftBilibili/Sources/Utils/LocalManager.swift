@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 import SwiftyUserDefaults
 
 class LocalManager {
@@ -45,5 +44,11 @@ class LocalManager {
     }
     
     static var userInfo: UserInfo = UserInfo()
+    
+    
+    class func clearUserInfo() {
+        
+        
+    }
     
 }

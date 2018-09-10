@@ -19,7 +19,7 @@ private enum HomeNavBarPosition {
 final class HomeParentViewController: BaseViewController {
     
     private struct Metric {
-        static let statusBarHeight = isIphoneX ? 36.f : 20.f
+        static let statusBarHeight = isIphoneX ? 44.f : 20.f
         static let navBarHeight = 44.f
     }
     
@@ -27,7 +27,7 @@ final class HomeParentViewController: BaseViewController {
     
     private var requestIds : [Int] = []
     
-    private let service: HomeServiceType
+    private let homeService: HomeServiceType
     
     private var idxs: [UInt] = []
 
@@ -43,7 +43,7 @@ final class HomeParentViewController: BaseViewController {
         $0.magicView.navigationColor = .db_white
         $0.magicView.sliderColor = .db_pink
         $0.magicView.switchStyle = .default
-        $0.magicView.layoutStyle = .default
+        $0.magicView.layoutStyle = .center
         $0.magicView.navigationHeight = 44.f
         $0.magicView.sliderExtension = 3
         $0.magicView.sliderOffset = 0
@@ -52,6 +52,7 @@ final class HomeParentViewController: BaseViewController {
         $0.magicView.isSeparatorHidden = false
         $0.magicView.itemSpacing = 35
         $0.magicView.bubbleRadius = 2
+        $0.magicView.needPreloading = true
     }
     
     let statusBar = UIView().then{
@@ -64,7 +65,7 @@ final class HomeParentViewController: BaseViewController {
     
     init(service:HomeServiceType) {
         
-        self.service = service
+        self.homeService = service
         super.init()
         
         self.tabBarItem.image = Image.TabBar.home
@@ -92,12 +93,9 @@ final class HomeParentViewController: BaseViewController {
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(navBar.snp.bottom)
         }
-        
-
     }
     
     // MARK: StatusBar
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -112,9 +110,11 @@ final class HomeParentViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isStatusBarHidden = false
+        
         configureMagicController()
         
-        service.recommendBranch().asObservable()
+        homeService.recommendBranch().asObservable()
             .subscribe(onNext: {[weak self] (rcmdBranchModel) in
                 
                 guard let `self` = self else { return }
@@ -125,7 +125,6 @@ final class HomeParentViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
 
-    
     func configureMagicController() {
         
         self.view.addSubview(navBar)
@@ -161,7 +160,6 @@ final class HomeParentViewController: BaseViewController {
     
     
     private func changeNavBarPosition(scrollDirection: ScrollDirection) {
-
         if scrollDirection == .down {
             if navBarPosition == .normal {
                 lastNavBarPosition = .normal
@@ -190,9 +188,7 @@ final class HomeParentViewController: BaseViewController {
             }
         }
     }
-    
 }
-
 extension HomeParentViewController : VTMagicViewDelegate {
     
     func magicView(_ magicView: VTMagicView, didSelectItemAt itemIndex: UInt) {
@@ -265,7 +261,10 @@ extension HomeParentViewController: VTMagicViewDataSource {
         if pageIndex == 0 {
             var liveController = magicView.dequeueReusablePage(withIdentifier: "LiveListViewController")
             if liveController == nil {
-                let reactor = LiveListViewReactor(service: self.service)
+                let liveSectionReactorFactory: (LiveModuleListModel) -> LiveListSectionReactor = { moduleList in
+                    return LiveListSectionReactor(module: moduleList)
+                }
+                let reactor = LiveListViewReactor(service: homeService, liveSectionReactorFactory: liveSectionReactorFactory)
                 liveController = LiveListViewController(reactor: reactor, liveListSectionDelegateFactory: { () -> LiveListSectionDelegate in
                     LiveListSectionDelegate()
                 })
@@ -280,7 +279,7 @@ extension HomeParentViewController: VTMagicViewDataSource {
         }else if pageIndex == 2 {
             var dramaController = magicView.dequeueReusablePage(withIdentifier: "DramaViewController")
             if dramaController == nil {
-                let reactor = DramaViewReactor(service: service)
+                let reactor = DramaViewReactor(service: homeService)
                 dramaController = DramaViewController(reactor: reactor, dramaSectionDelegateFactory: { () -> DramaSectionDelegate in
                     DramaSectionDelegate()
                 })
@@ -289,15 +288,13 @@ extension HomeParentViewController: VTMagicViewDataSource {
         }else {
             var branchController = magicView.dequeueReusablePage(withIdentifier: "BranchViewController")
             if branchController == nil {
-                branchController = BranchViewController(requestId:requestIds[Int(pageIndex) - 3])
+                let reactor = BranchViewReactor(homeService: homeService)
+                branchController = BranchViewController(reactor: reactor, branchSectionDelegateFactory: { () -> BranchSectionDelegate in
+                    BranchSectionDelegate()
+                })
             }
+            (branchController as! BranchViewController).setId(id: requestIds[Int(pageIndex) - 3])
             return branchController ?? UIViewController()
         }
     }
 }
-
-
-
-
-
-

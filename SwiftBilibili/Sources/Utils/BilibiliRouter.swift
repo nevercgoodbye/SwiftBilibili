@@ -8,53 +8,42 @@
 
 import UIKit
 
+import URLNavigator
+
+
 enum BilibiliPushType {
     case recommend_rank
-    case live_beauty
+    case recommend_player
     case live_room
-    case live_recommend
-    case live_partition(id:Int)
+    case live_all
     case drama_recommend
 }
 
+
 enum BilibiliOpenType: String {
-    case login = "Bilibili://login"
+    case area = "http://live.bilibili.com/app/area"
+    case common = "http://live.bilibili.com/app/mytag/"
+    case attention = "http://live.bilibili.com/app/myfollow/"
+    case all = "http://live.bilibili.com/app/all-live/"
+    
+    case login = "Bilibili://app/login"
 }
 
 extension BilibiliPushType {
 
-    var transmitPath:String {
+    var path:String {
         switch self {
         case .recommend_rank:
             return "Bilibili://recommend/rank"
-        case .live_beauty:
-            return "Bilibili://live/beauty"
-        case .live_recommend:
+        case .recommend_player:
+            return "Bilibili://recommend/player"
+        case .live_all:
             return "Bilibili://live/recommend"
         case .live_room:
             return "Bilibili://live/room"
-        case .live_partition(let id):
-            return "Bilibili://live/partition/\(id)"
         case .drama_recommend:
             return "Bilibili://drama/recommend"
-        
-        }
-    }
-    
-    var registerPath: String {
-        switch self {
-        case .recommend_rank:
-            return "Bilibili://recommend/rank"
-        case .live_beauty:
-            return "Bilibili://live/beauty"
-        case .live_recommend:
-            return "Bilibili://live/recommend"
-        case .live_room:
-            return "Bilibili://live/room"
-        case .live_partition:
-            return "Bilibili://live/partition/<int:id>"
-        case .drama_recommend:
-            return "Bilibili://drama/recommend"
+
         }
     }
 }
@@ -64,17 +53,26 @@ class BilibiliRouter {
     @discardableResult
     class func push(_ type:BilibiliPushType, context: Any? = nil) -> UIViewController? {
        
-       return navigator.push(type.transmitPath, context: context)
+       return navigator.push(type.path, context: context)
     }
     
     @discardableResult
     class func push(_ url:String) -> UIViewController? {
+        
         return navigator.push(url)
     }
     
     @discardableResult
-    class func open(_ type: BilibiliOpenType) -> Bool? {
-        return navigator.open(type.rawValue)
+    class func open(_ url:String) -> Bool? {
+        
+        guard let header = url.components(separatedBy: "?").first,
+              let _ = BilibiliOpenType(rawValue: header)
+        else {
+            BilibiliToaster.show("需要跳转的路径未找到,请先注册")
+            return nil
+        }
+        
+        return navigator.open(url)
     }
 }
 

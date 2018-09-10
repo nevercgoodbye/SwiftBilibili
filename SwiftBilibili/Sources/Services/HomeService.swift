@@ -10,6 +10,8 @@ import RxSwift
 import SwiftyJSON
 
 protocol HomeServiceType {
+
+    //var liveTotalModels: Observable<[LiveTotalModel]> { get }
     
     //启动页
     func splash() -> Single<SplashModel>
@@ -20,17 +22,17 @@ protocol HomeServiceType {
     func watchLater(idx:String) -> Single<Void>
     func rankWholeStation() -> Single<RankModel>
     func rankRegion(regionType: RankRegionType) -> Single<[RankChildrenModel]>
+    //标题栏其余数据(除直播，推荐，追番)
+    func BranchData(id:Int) -> Single<BranchDataModel>
+    
     //直播
-    func livePartitionList() -> Single<LiveTotalModel>
-    func liveRecommendList() -> Single<[LiveStarShowModel]>
-    func reloadRecommendPartition() -> Single<LiveRecommendModel>
-    func reloadCommonPartition(partitionType:LivePartitionType) -> Single<[LivePartitionAvModel]>
-    func getOtherSourceRoomList(page:Int,pageSize:Int) -> Single<[LivePartitionAvModel]>
-    func liveAll(subType:LiveAllSubType) -> Single<[LiveRecommendAvModel]>
+    func liveModuleList(moduleId:Int) ->Single<LiveTotalModel>
+    func liveUserSetting() -> Single<LiveUserSettingModel>
+    func liveAll(subType:LiveAllSubType,page:Int) -> Single<[LiveAllModel]>
     //番剧
     func dramaPage() -> Single<DramaPageModel>
-    func dramaFall(cursor:String) -> Single<[DramaFootModel]>
-    func dramaMine() -> Single<DramaMineModel>
+    func dramaFall(cursor:String) -> Single<[DramaItemModel]>
+    //func dramaMine() -> Single<DramaMineModel>
     func dramaRcmd() -> Single<[DramaRecommendModel]>
     func dramaFollow(season_id:String,season_type:String) -> Single<Void>
     func dramaUnFollow(season_id:String,season_type:String) -> Single<Void>
@@ -74,6 +76,10 @@ final class HomeService: HomeServiceType {
         return networking.request(.recommendBranch).map(RecommendBranchModel.self)
     }
     
+    func BranchData(id:Int) -> Single<BranchDataModel> {
+        return networking.request(.branchData(id: id)).map(BranchDataModel.self)
+    }
+    
     func watchLater(idx: String) -> Single<Void> {
         return networking.request(.watchLater(idx: idx)).map{ _ in }.handleError()
     }
@@ -86,44 +92,31 @@ final class HomeService: HomeServiceType {
         return networking.request(.rankRegion(regionType: regionType)).map(RankChildrenModel.self)
     }
     
-    func livePartitionList() -> Single<LiveTotalModel> {
-        return networking.request(.livePartitionList).map(LiveTotalModel.self)
+    func liveModuleList(moduleId:Int) ->Single<LiveTotalModel> {
+        return networking.request(.liveModuleList(moduleId:moduleId)).map(LiveTotalModel.self)
     }
     
-    func liveRecommendList() -> Single<[LiveStarShowModel]> {
-        return networking.request(.liveRecommendList).map(LiveStarShowModel.self)
+    func liveUserSetting() -> Single<LiveUserSettingModel>  {
+        return networking.request(.liveUserSetting).map(LiveUserSettingModel.self)
     }
     
-    func reloadRecommendPartition() -> Single<LiveRecommendModel> {
-        return networking.request(.reloadRecommendPartition).map(LiveRecommendModel.self)
-    }
     
-    func reloadCommonPartition(partitionType:LivePartitionType) -> Single<[LivePartitionAvModel]> {
-        return networking.request(.reloadCommonPartition(partitionType)).map(LivePartitionAvModel.self)
-    }
-    
-    func getOtherSourceRoomList(page:Int,pageSize:Int) -> Single<[LivePartitionAvModel]> {
-        
-        return networking.request(.getOtherSourceRoomList(page:page,pageSize:pageSize)).map(LivePartitionAvModel.self)
-    }
-    
-    func liveAll(subType:LiveAllSubType) -> Single<[LiveRecommendAvModel]> {
-        return networking.request(.allLive(subType: subType)).map(LiveRecommendAvModel.self)
+    func liveAll(subType:LiveAllSubType,page:Int) -> Single<[LiveAllModel]> {
+        return networking.request(.liveTotal(subType: subType, page: page)).map(LiveAllModel.self)
     }
     
     func dramaPage() -> Single<DramaPageModel> {
-        
         return networking.request(.dramaPage).map(DramaPageModel.self)
     }
     
-    func dramaFall(cursor:String) -> Single<[DramaFootModel]> {
+    func dramaFall(cursor:String) -> Single<[DramaItemModel]> {
         
-        return networking.request(.dramaFall(cursor: cursor)).map(DramaFootModel.self)
+        return networking.request(.dramaFall(cursor: cursor)).map(DramaItemModel.self)
     }
     
-    func dramaMine() -> Single<DramaMineModel> {
-        return networking.request(.dramaMine).map(DramaMineModel.self).handleError()
-    }
+//    func dramaMine() -> Single<DramaMineModel> {
+//        return networking.request(.dramaMine).map(DramaMineModel.self).handleError(DramaMineModel())
+//    }
     
     func dramaRcmd() -> Single<[DramaRecommendModel]> {
         return networking.request(.dramaRcmd).map(DramaRecommendModel.self)

@@ -13,14 +13,9 @@ import ReactorKit
 final class LiveRoundRoomCell: BaseCollectionViewCell,View {
     
     // MARK: UI
-    private let backgroundImageView = UIImageView().then{
-        $0.cornerRadius = kCornerRadius
-        $0.backgroundColor = .db_white
-        $0.isUserInteractionEnabled = true
-    }
-    
     private let coverImageView = UIImageView().then{
         $0.isUserInteractionEnabled = true
+        $0.cornerRadius = kCornerRadius
     }
     
     private let shadowImageView = UIImageView().then{
@@ -29,7 +24,7 @@ final class LiveRoundRoomCell: BaseCollectionViewCell,View {
     
     private let anchorNameLabel = UILabel().then{
         $0.textColor = .db_white
-        $0.font = Font.SysFont.sys_13
+        $0.font = Font.SysFont.sys_12
     }
     
     private let liveTitleLabel = UILabel().then{
@@ -38,16 +33,16 @@ final class LiveRoundRoomCell: BaseCollectionViewCell,View {
     }
     
     override func initialize() {
-        contentView.addSubview(backgroundImageView)
-        backgroundImageView.addSubview(coverImageView)
-        backgroundImageView.addSubview(liveTitleLabel)
+        
+        contentView.addSubview(coverImageView)
+        contentView.addSubview(liveTitleLabel)
         coverImageView.addSubview(shadowImageView)
         shadowImageView.addSubview(anchorNameLabel)
     }
     
     func bind(reactor: LiveRoundRoomCellReactor) {
         
-        let placeholderSize = CGSize(width: self.width, height: self.height * 3/4)
+        let placeholderSize = CGSize(width: self.width, height: self.height * 0.6)
         reactor.state.map{$0.coverURL}
             .bind(to: coverImageView.rx.image(placeholder: .placeholderImage(bgSize:placeholderSize)))
             .disposed(by: disposeBag)
@@ -68,15 +63,14 @@ final class LiveRoundRoomCell: BaseCollectionViewCell,View {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        setShadow()
+        let leftMargin = reactor!.live.isLeft ? kCollectionItemPadding : kCollectionItemPadding/2
+        let rightMargin = reactor!.live.isLeft ? -kCollectionItemPadding/2 : -kCollectionItemPadding
         
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        coverImageView.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
-            make.height.equalTo(self.height * 3 / 4)
+        coverImageView.snp.remakeConstraints { (make) in
+            make.top.equalTo(10)
+            make.left.equalTo(leftMargin)
+            make.right.equalTo(rightMargin)
+            make.height.equalTo(kLiveItemHeight*0.6)
         }
         
         shadowImageView.snp.makeConstraints { (make) in
@@ -85,15 +79,13 @@ final class LiveRoundRoomCell: BaseCollectionViewCell,View {
         }
         
         anchorNameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.bottom.equalTo(-10)
+            make.left.equalTo(5)
+            make.bottom.equalTo(-5)
         }
         
         liveTitleLabel.snp.makeConstraints { (make) in
-           make.left.equalTo(10)
-           make.right.equalTo(-10)
-           make.bottom.equalToSuperview()
-           make.top.equalTo(coverImageView.snp.bottom)
+           make.left.right.equalTo(coverImageView)
+           make.top.equalTo(coverImageView.snp.bottom).offset(10)
         }
 
     }

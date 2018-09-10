@@ -23,6 +23,7 @@ final class TogetherTipCell: BaseCollectionViewCell {
     }
     
     override func initialize() {
+        self.backgroundColor = UIColor.db_gray
         contentView.addSubview(tipButton)
     }
     

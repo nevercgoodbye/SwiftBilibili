@@ -20,23 +20,39 @@ final class DramaVerticalCellReactor: Reactor {
         var latestUpdate: String
         var watchProgress: String?
         var latestUpdateColor: UIColor
+        var leftMargin:CGFloat
+        var rightMargin:CGFloat
     }
     
     let initialState: State
     
-    init(recommend: DramaRecommendModel) {
+    init(recommend: DramaItemModel) {
         
-        let coverURL = URL(string: recommend.cover)
-        let favourites = "\(recommend.favourites ?? "")人追番"
-        let latestUpdate = "更新至第\(recommend.newest_ep_index)话"
+        let coverURL = URL(string: recommend.cover ?? "")
+        let favourites = "\(recommend.stat?.follow ?? "")人追番"
+        let latestUpdate = recommend.desc ?? ""
+        var leftMargin = 0.f,rightMargin = 0.f
+        switch recommend.position {
+        case .left:
+            leftMargin = kCollectionItemPadding
+            rightMargin = kCollectionItemPadding/2
+        case .middle:
+            leftMargin = kCollectionItemPadding/2
+            rightMargin = kCollectionItemPadding/2
+        case .right:
+            leftMargin = kCollectionItemPadding/2
+            rightMargin = kCollectionItemPadding
+        }
         
         self.initialState = State(coverURL: coverURL,
                                   favourites: favourites,
                                   badge: recommend.badge,
-                                  title: recommend.title,
+                                  title: recommend.title ?? "",
                                   latestUpdate: latestUpdate,
                                   watchProgress: nil,
-                                  latestUpdateColor: UIColor.db_lightGray)
+                                  latestUpdateColor: UIColor.db_lightGray,
+                                  leftMargin:leftMargin,
+                                  rightMargin:rightMargin)
         _ = self.state
     }
     
@@ -57,13 +73,28 @@ final class DramaVerticalCellReactor: Reactor {
             }
         }
         
+        var leftMargin = 0.f,rightMargin = 0.f
+        switch follow.position {
+        case .left:
+            leftMargin = kCollectionItemPadding
+            rightMargin = kCollectionItemPadding/2
+        case .middle:
+            leftMargin = kCollectionItemPadding/2
+            rightMargin = kCollectionItemPadding/2
+        case .right:
+            leftMargin = kCollectionItemPadding/2
+            rightMargin = kCollectionItemPadding
+        }
+        
         self.initialState = State(coverURL: coverURL,
                                   favourites: nil,
                                   badge: nil,
                                   title: follow.title,
                                   latestUpdate: latestUpdate,
                                   watchProgress: watchProgress,
-                                  latestUpdateColor: UIColor.db_pink)
+                                  latestUpdateColor: UIColor.db_pink,
+                                  leftMargin:leftMargin,
+                                  rightMargin:rightMargin)
         _ = self.state
     }
 }

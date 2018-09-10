@@ -14,15 +14,14 @@ final class BilibiliToaster {
 
    static func show(_ text: String,
                     _ delay: TimeInterval = 0,
-                    _ duration: TimeInterval = 3,
+                    _ duration: TimeInterval = 2,
                     bottomOffsetPortrait: CGFloat = kToastBottomMaxSpace) {
     
         ToastView.appearance().bottomOffsetPortrait = bottomOffsetPortrait
     
-        Toast(text: text, delay: delay, duration: duration).show()
+        if ToastCenter.default.currentToast == nil {
+            
+           Toast(text: text, delay: delay, duration: duration).show()
+        }
     }
-   
-    
-    
-
 }

@@ -9,7 +9,14 @@
 /* Begin PBXBuildFile section */
 		94B8ECBB91699CCFB4361BF9 /* Pods_SwiftBilibili.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B200674728303B6A037150D5 /* Pods_SwiftBilibili.framework */; };
 		E0020C42206A49F3003908FF /* LiveRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0020C41206A49F3003908FF /* LiveRoomViewController.swift */; };
+		E002128E214267B0004D5EF0 /* BranchEntranceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002128D214267B0004D5EF0 /* BranchEntranceCell.swift */; };
+		E0021290214267D7004D5EF0 /* BranchEntranceCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002128F214267D7004D5EF0 /* BranchEntranceCellReactor.swift */; };
+		E002129221450DA4004D5EF0 /* LiveTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002129121450DA4004D5EF0 /* LiveTagView.swift */; };
+		E002129621461007004D5EF0 /* BilibiliButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002129421461007004D5EF0 /* BilibiliButton.swift */; };
+		E002129721461007004D5EF0 /* CountDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002129521461007004D5EF0 /* CountDownButton.swift */; };
+		E00212992146102B004D5EF0 /* VerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00212982146102B004D5EF0 /* VerticalButton.swift */; };
 		E00A0CF82060FDD4006C1DB1 /* DramaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A0CF72060FDD4006C1DB1 /* DramaHeaderView.swift */; };
+		E016714D20FF3AB600FF3A1E /* BilibiliCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016714C20FF3AB600FF3A1E /* BilibiliCollectionViewLayout.swift */; };
 		E01AFD712029560C0061B761 /* TogetherDislikeMaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01AFD702029560C0061B761 /* TogetherDislikeMaskView.xib */; };
 		E01AFD752029DAA20061B761 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AFD742029DAA20061B761 /* EmptyView.swift */; };
 		E01AFD772029DAB70061B761 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01AFD762029DAB70061B761 /* EmptyView.xib */; };
@@ -49,6 +56,9 @@
 		E025878620DB741100E96927 /* TogetherAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025878520DB741100E96927 /* TogetherAdView.swift */; };
 		E025878820DB742B00E96927 /* TogetherAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E025878720DB742B00E96927 /* TogetherAdView.xib */; };
 		E025878A20DB8FB900E96927 /* UIScrollView+Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025878920DB8FB900E96927 /* UIScrollView+Direction.swift */; };
+		E025C27820EE1006008CAB27 /* BranchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025C27720EE1006008CAB27 /* BranchDataModel.swift */; };
+		E025D7B520EB7F320067573F /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025D7B420EB7F320067573F /* UIButton+Kingfisher.swift */; };
+		E025D7B720EB86430067573F /* LiveAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025D7B620EB86430067573F /* LiveAllModel.swift */; };
 		E026ADD220118CE300C4C5D9 /* TogetherAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E026ADD120118CE300C4C5D9 /* TogetherAdCell.swift */; };
 		E026ADD4201190A000C4C5D9 /* TogetherAdCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E026ADD3201190A000C4C5D9 /* TogetherAdCellReactor.swift */; };
 		E026ADD82011996000C4C5D9 /* TogetherSectionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E026ADD72011996000C4C5D9 /* TogetherSectionReactor.swift */; };
@@ -66,20 +76,29 @@
 		E027D8542068906B00FBA44A /* LiveAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027D8532068906B00FBA44A /* LiveAllViewController.swift */; };
 		E027D8562068C57700FBA44A /* LiveRoundRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027D8552068C57700FBA44A /* LiveRoundRoomCell.swift */; };
 		E027D8582068C59300FBA44A /* LiveRoundRoomCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027D8572068C59300FBA44A /* LiveRoundRoomCellReactor.swift */; };
+		E0297C7A20E3221700DAE979 /* BilibiliArticleNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0297C7920E3221700DAE979 /* BilibiliArticleNavBar.swift */; };
+		E0297C7C20E3222600DAE979 /* BilibiliArticleNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0297C7B20E3222600DAE979 /* BilibiliArticleNavBar.xib */; };
 		E02AB6ED20D9F14B00822D06 /* HomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02AB6EC20D9F14B00822D06 /* HomeNavBar.swift */; };
 		E02AB8D020DA29DE00822D06 /* TVHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02AB8CF20DA29DE00822D06 /* TVHeaderAnimator.swift */; };
 		E02AB8D220DA4D9600822D06 /* HomeNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02AB8D120DA4D9600822D06 /* HomeNavBar.xib */; };
+		E02AB9F620E4DFAC0041DD6C /* LiveAllViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02AB9F520E4DFAC0041DD6C /* LiveAllViewReactor.swift */; };
+		E02C025620ECA06E00520164 /* LiveHourRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02C025520ECA06E00520164 /* LiveHourRankCell.swift */; };
+		E030B8BF20E22D4100861572 /* BilibiliArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030B8BE20E22D4100861572 /* BilibiliArticleViewController.swift */; };
 		E0312F9720D0F42C00AF2249 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312F9620D0F42C00AF2249 /* ImageManager.swift */; };
-		E0312F9A20D1084500AF2249 /* CountDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312F9920D1084500AF2249 /* CountDownButton.swift */; };
 		E031918620944AF20076A377 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E031918520944AF20076A377 /* BaseTableViewController.swift */; };
 		E031918820944EFE0076A377 /* RankViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E031918720944EFE0076A377 /* RankViewReactor.swift */; };
 		E031918C209457A50076A377 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E031918B209457A50076A377 /* RankModel.swift */; };
 		E031918E20945DB80076A377 /* RankParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E031918D20945DB80076A377 /* RankParentViewController.swift */; };
 		E03BAC4C20C684AE00004796 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03BAC4B20C684AE00004796 /* Image.swift */; };
 		E03BAC4E20C6887900004796 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03BAC4D20C6887900004796 /* Font.swift */; };
+		E0421E36213E349C00AA8ADE /* UIViewController+NetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0421E35213E349C00AA8ADE /* UIViewController+NetAnimation.swift */; };
 		E048C8E2204137070073452B /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E048C8E1204137060073452B /* Refreshable.swift */; };
 		E048C8EC2041631A0073452B /* LiveTotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E048C8EB2041631A0073452B /* LiveTotalModel.swift */; };
 		E04A409120CA62DF0013E377 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04A409020CA62DF0013E377 /* Number.swift */; };
+		E04CA7B720F9D877009A9CB3 /* BranchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04CA7B620F9D877009A9CB3 /* BranchHeaderView.swift */; };
+		E04CA7B920F9D9E5009A9CB3 /* BranchPartitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04CA7B820F9D9E5009A9CB3 /* BranchPartitionView.swift */; };
+		E04CA7BB20F9E973009A9CB3 /* BranchPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04CA7BA20F9E973009A9CB3 /* BranchPlayerCell.swift */; };
+		E04CA7BD20F9E98E009A9CB3 /* BranchPlayerCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04CA7BC20F9E98E009A9CB3 /* BranchPlayerCellReactor.swift */; };
 		E056206620884A3700D33C37 /* DramaRcmdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056206520884A3700D33C37 /* DramaRcmdViewController.swift */; };
 		E056206820884EEE00D33C37 /* DramaRcmdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056206720884EEE00D33C37 /* DramaRcmdCell.swift */; };
 		E056206A208861C900D33C37 /* DramaRcmdCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0562069208861C900D33C37 /* DramaRcmdCellReactor.swift */; };
@@ -107,10 +126,9 @@
 		E069C43B205A431200697634 /* DramaVerticalCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E069C43A205A431200697634 /* DramaVerticalCellReactor.swift */; };
 		E06A8DEE200B43E200A70FB1 /* LiveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A8DED200B43E200A70FB1 /* LiveListViewController.swift */; };
 		E06A8DF0200B43F100A70FB1 /* RecommendParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A8DEF200B43F100A70FB1 /* RecommendParentViewController.swift */; };
-		E06A8DF2200B442C00A70FB1 /* HomeFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A8DF1200B442C00A70FB1 /* HomeFilmViewController.swift */; };
 		E06A8DF4200B443B00A70FB1 /* DramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A8DF3200B443B00A70FB1 /* DramaViewController.swift */; };
-		E06A8DF6200B444B00A70FB1 /* HomeColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A8DF5200B444B00A70FB1 /* HomeColumnViewController.swift */; };
 		E06A8DFA200B62B400A70FB1 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A8DF9200B62B400A70FB1 /* MainNavigationController.swift */; };
+		E06A9C1120F83A41005D3EDE /* BranchSectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A9C1020F83A41005D3EDE /* BranchSectionDelegate.swift */; };
 		E07348922009BA6E00ACA8F7 /* SwiftBilibiliTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07348912009BA6E00ACA8F7 /* SwiftBilibiliTests.swift */; };
 		E073489D2009BA6E00ACA8F7 /* SwiftBilibiliUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073489C2009BA6E00ACA8F7 /* SwiftBilibiliUITests.swift */; };
 		E07348BB200A05C500ACA8F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E07348B5200A05C500ACA8F7 /* Assets.xcassets */; };
@@ -122,7 +140,6 @@
 		E07348CE200A113100ACA8F7 /* Moya+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07348CD200A113100ACA8F7 /* Moya+Rx.swift */; };
 		E07348D2200A13FE00ACA8F7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07348D1200A13FE00ACA8F7 /* Networking.swift */; };
 		E07348D4200A141F00ACA8F7 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07348D3200A141F00ACA8F7 /* HomeAPI.swift */; };
-		E073A4362057AC9A003576A0 /* WRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073A4352057AC9A003576A0 /* WRNavigationBar.swift */; };
 		E073F30120515AEE00BC9132 /* BilibiliBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073F30020515AEE00BC9132 /* BilibiliBannerCell.swift */; };
 		E073F30320515ECB00BC9132 /* BilibiliBannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073F30220515ECB00BC9132 /* BilibiliBannerModel.swift */; };
 		E074A7AA200C91ED00E6363C /* NetAnimationLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E074A7A9200C91ED00E6363C /* NetAnimationLoadable.swift */; };
@@ -133,18 +150,17 @@
 		E074A7BE200CD74C00E6363C /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E074A7BD200CD74C00E6363C /* NibLoadable.swift */; };
 		E07D61182061F133004D99E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D61172061F133004D99E9 /* LoginViewController.swift */; };
 		E07D611E20622AE6004D99E9 /* BilibiliToaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D611D20622AE6004D99E9 /* BilibiliToaster.swift */; };
-		E07D612020634E0F004D99E9 /* LiveBeautyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D611F20634E0F004D99E9 /* LiveBeautyCell.swift */; };
-		E07D612220634E33004D99E9 /* LiveBeautyCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D612120634E33004D99E9 /* LiveBeautyCellReactor.swift */; };
 		E089A31D20886C03000FD77E /* TypeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A31C20886C03000FD77E /* TypeTransform.swift */; };
+		E08F319920F494AA00390E79 /* BranchViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F319820F494AA00390E79 /* BranchViewSection.swift */; };
+		E08F319C20F4959C00390E79 /* BranchSpecialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F319B20F4959C00390E79 /* BranchSpecialCell.swift */; };
+		E08F319E20F4D9E100390E79 /* BranchSpecialCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F319D20F4D9E100390E79 /* BranchSpecialCellReactor.swift */; };
 		E09F5143206B812D009ABB0D /* LWPlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F513F206B812D009ABB0D /* LWPlayerDelegate.swift */; };
 		E09F5144206B812D009ABB0D /* LWPlayerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F5140206B812D009ABB0D /* LWPlayerEnum.swift */; };
 		E09F5147206B8146009ABB0D /* LWPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F5146206B8146009ABB0D /* LWPlayer.swift */; };
 		E09F5149206B849C009ABB0D /* LWPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F5148206B849C009ABB0D /* LWPlayerView.swift */; };
 		E09F514C206B921B009ABB0D /* AVPlayer+LWPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F514B206B921B009ABB0D /* AVPlayer+LWPlayer.swift */; };
-		E0A91ABD2064AD6200914B4B /* LiveBeautyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A91ABC2064AD6200914B4B /* LiveBeautyViewController.swift */; };
 		E0A91ABF2064CA9D00914B4B /* LiveAllParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A91ABE2064CA9D00914B4B /* LiveAllParentViewController.swift */; };
 		E0A91AC12064CB8500914B4B /* LivePartitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A91AC02064CB8500914B4B /* LivePartitionViewController.swift */; };
-		E0A91AC32064D24900914B4B /* LiveBeautyViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A91AC22064D24900914B4B /* LiveBeautyViewReactor.swift */; };
 		E0A9E5D62046B52B00012FC7 /* LiveListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A9E5D52046B52B00012FC7 /* LiveListHeaderView.swift */; };
 		E0A9E5D82046B5DB00012FC7 /* LiveListPartitionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A9E5D72046B5DB00012FC7 /* LiveListPartitionHeaderView.swift */; };
 		E0A9E5DA2046B60200012FC7 /* LiveListPartitionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A9E5D92046B60200012FC7 /* LiveListPartitionHeaderView.xib */; };
@@ -163,8 +179,6 @@
 		E0C15A662043AAB80072F354 /* LiveAvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A652043AAB80072F354 /* LiveAvCell.swift */; };
 		E0C15A682043B9610072F354 /* LiveListViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A672043B9610072F354 /* LiveListViewSection.swift */; };
 		E0C15A6A2043B9D40072F354 /* LiveAvCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A692043B9D40072F354 /* LiveAvCellReactor.swift */; };
-		E0C15A6C2044025C0072F354 /* LiveBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A6B2044025C0072F354 /* LiveBannerCell.swift */; };
-		E0C15A6E2044052D0072F354 /* LiveBannerCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A6D2044052D0072F354 /* LiveBannerCellReactor.swift */; };
 		E0C15A70204409550072F354 /* LiveListSectionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A6F204409550072F354 /* LiveListSectionReactor.swift */; };
 		E0C15A72204537870072F354 /* LiveListSectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A71204537870072F354 /* LiveListSectionDelegate.swift */; };
 		E0C15A7420455AB90072F354 /* LiveListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C15A7320455AB90072F354 /* LiveListFooterView.swift */; };
@@ -206,22 +220,18 @@
 		E0CFAE4820722B880039D761 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CFAE4720722B880039D761 /* libstdc++.tbd */; };
 		E0CFAE4A20722B950039D761 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CFAE4920722B950039D761 /* libbz2.tbd */; };
 		E0CFAE4C20722BA00039D761 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CFAE4B20722B9F0039D761 /* libz.tbd */; };
+		E0D7A21220F3165700933D6B /* BranchViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A21120F3165700933D6B /* BranchViewReactor.swift */; };
 		E0D942D6204792E8000D2C66 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D942D5204792E8000D2C66 /* SearchBarView.swift */; };
 		E0D942D8204792FC000D2C66 /* SearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D942D7204792FC000D2C66 /* SearchBarView.xib */; };
-		E0D942DF20480F3F000D2C66 /* LiveListStarShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D942DE20480F3F000D2C66 /* LiveListStarShowView.swift */; };
-		E0D942E120481085000D2C66 /* LiveListStarShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D942E020481085000D2C66 /* LiveListStarShowCell.swift */; };
-		E0D942E320481092000D2C66 /* LiveListStarShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D942E220481092000D2C66 /* LiveListStarShowCell.xib */; };
-		E0D942E9204AE12D000D2C66 /* LiveListStarShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D942E8204AE12D000D2C66 /* LiveListStarShowView.xib */; };
-		E0D942EB204AEDA8000D2C66 /* LiveListCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D942EA204AEDA8000D2C66 /* LiveListCategoryView.swift */; };
 		E0DE1A8F200C7C80007D8AFE /* LoadingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE1A8E200C7C80007D8AFE /* LoadingPlugin.swift */; };
 		E0E6449F206CF112007D105F /* LWPlayerFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E6449E206CF112007D105F /* LWPlayerFullScreenViewController.swift */; };
 		E0EFB9D120522D5100F6B744 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EFB9D020522D5100F6B744 /* TestViewController.swift */; };
-		E0F23981204E5F2C00AE9537 /* BilibiliButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F23980204E5F2C00AE9537 /* BilibiliButton.swift */; };
 		E0F23983204E860400AE9537 /* UILabel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F23982204E860400AE9537 /* UILabel+Rx.swift */; };
 		E0FB8BE0205CF8D900757830 /* DramaViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB8BDF205CF8D900757830 /* DramaViewReactor.swift */; };
 		E0FB8BE2205CF92300757830 /* DramaViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB8BE1205CF92300757830 /* DramaViewSection.swift */; };
 		E0FB8BE4205CF93800757830 /* DramaSectionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB8BE3205CF93800757830 /* DramaSectionReactor.swift */; };
 		E0FB8BE6205CF97C00757830 /* DramaSectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB8BE5205CF97C00757830 /* DramaSectionDelegate.swift */; };
+		E0FD209920F5F02D00EBE828 /* BranchSectionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FD209820F5F02D00EBE828 /* BranchSectionReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,7 +256,14 @@
 		9FD7E2FA2FD65AC4A288FB16 /* Pods-SwiftBilibili.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBilibili.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBilibili/Pods-SwiftBilibili.debug.xcconfig"; sourceTree = "<group>"; };
 		B200674728303B6A037150D5 /* Pods_SwiftBilibili.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBilibili.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0020C41206A49F3003908FF /* LiveRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomViewController.swift; sourceTree = "<group>"; };
+		E002128D214267B0004D5EF0 /* BranchEntranceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchEntranceCell.swift; sourceTree = "<group>"; };
+		E002128F214267D7004D5EF0 /* BranchEntranceCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchEntranceCellReactor.swift; sourceTree = "<group>"; };
+		E002129121450DA4004D5EF0 /* LiveTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTagView.swift; sourceTree = "<group>"; };
+		E002129421461007004D5EF0 /* BilibiliButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BilibiliButton.swift; sourceTree = "<group>"; };
+		E002129521461007004D5EF0 /* CountDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownButton.swift; sourceTree = "<group>"; };
+		E00212982146102B004D5EF0 /* VerticalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalButton.swift; sourceTree = "<group>"; };
 		E00A0CF72060FDD4006C1DB1 /* DramaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaHeaderView.swift; sourceTree = "<group>"; };
+		E016714C20FF3AB600FF3A1E /* BilibiliCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E01AFD702029560C0061B761 /* TogetherDislikeMaskView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TogetherDislikeMaskView.xib; sourceTree = "<group>"; };
 		E01AFD742029DAA20061B761 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		E01AFD762029DAB70061B761 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
@@ -285,6 +302,9 @@
 		E025878520DB741100E96927 /* TogetherAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherAdView.swift; sourceTree = "<group>"; };
 		E025878720DB742B00E96927 /* TogetherAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TogetherAdView.xib; sourceTree = "<group>"; };
 		E025878920DB8FB900E96927 /* UIScrollView+Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Direction.swift"; sourceTree = "<group>"; };
+		E025C27720EE1006008CAB27 /* BranchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDataModel.swift; sourceTree = "<group>"; };
+		E025D7B420EB7F320067573F /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
+		E025D7B620EB86430067573F /* LiveAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAllModel.swift; sourceTree = "<group>"; };
 		E026ADD120118CE300C4C5D9 /* TogetherAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherAdCell.swift; sourceTree = "<group>"; };
 		E026ADD3201190A000C4C5D9 /* TogetherAdCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherAdCellReactor.swift; sourceTree = "<group>"; };
 		E026ADD72011996000C4C5D9 /* TogetherSectionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherSectionReactor.swift; sourceTree = "<group>"; };
@@ -302,20 +322,29 @@
 		E027D8532068906B00FBA44A /* LiveAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAllViewController.swift; sourceTree = "<group>"; };
 		E027D8552068C57700FBA44A /* LiveRoundRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoundRoomCell.swift; sourceTree = "<group>"; };
 		E027D8572068C59300FBA44A /* LiveRoundRoomCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoundRoomCellReactor.swift; sourceTree = "<group>"; };
+		E0297C7920E3221700DAE979 /* BilibiliArticleNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliArticleNavBar.swift; sourceTree = "<group>"; };
+		E0297C7B20E3222600DAE979 /* BilibiliArticleNavBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BilibiliArticleNavBar.xib; sourceTree = "<group>"; };
 		E02AB6EC20D9F14B00822D06 /* HomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavBar.swift; sourceTree = "<group>"; };
 		E02AB8CF20DA29DE00822D06 /* TVHeaderAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVHeaderAnimator.swift; sourceTree = "<group>"; };
 		E02AB8D120DA4D9600822D06 /* HomeNavBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavBar.xib; sourceTree = "<group>"; };
+		E02AB9F520E4DFAC0041DD6C /* LiveAllViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAllViewReactor.swift; sourceTree = "<group>"; };
+		E02C025520ECA06E00520164 /* LiveHourRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHourRankCell.swift; sourceTree = "<group>"; };
+		E030B8BE20E22D4100861572 /* BilibiliArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliArticleViewController.swift; sourceTree = "<group>"; };
 		E0312F9620D0F42C00AF2249 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		E0312F9920D1084500AF2249 /* CountDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownButton.swift; sourceTree = "<group>"; };
 		E031918520944AF20076A377 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		E031918720944EFE0076A377 /* RankViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewReactor.swift; sourceTree = "<group>"; };
 		E031918B209457A50076A377 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
 		E031918D20945DB80076A377 /* RankParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankParentViewController.swift; sourceTree = "<group>"; };
 		E03BAC4B20C684AE00004796 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		E03BAC4D20C6887900004796 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		E0421E35213E349C00AA8ADE /* UIViewController+NetAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NetAnimation.swift"; sourceTree = "<group>"; };
 		E048C8E1204137060073452B /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		E048C8EB2041631A0073452B /* LiveTotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTotalModel.swift; sourceTree = "<group>"; };
 		E04A409020CA62DF0013E377 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		E04CA7B620F9D877009A9CB3 /* BranchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchHeaderView.swift; sourceTree = "<group>"; };
+		E04CA7B820F9D9E5009A9CB3 /* BranchPartitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchPartitionView.swift; sourceTree = "<group>"; };
+		E04CA7BA20F9E973009A9CB3 /* BranchPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchPlayerCell.swift; sourceTree = "<group>"; };
+		E04CA7BC20F9E98E009A9CB3 /* BranchPlayerCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchPlayerCellReactor.swift; sourceTree = "<group>"; };
 		E056206520884A3700D33C37 /* DramaRcmdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaRcmdViewController.swift; sourceTree = "<group>"; };
 		E056206720884EEE00D33C37 /* DramaRcmdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaRcmdCell.swift; sourceTree = "<group>"; };
 		E0562069208861C900D33C37 /* DramaRcmdCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaRcmdCellReactor.swift; sourceTree = "<group>"; };
@@ -343,10 +372,9 @@
 		E069C43A205A431200697634 /* DramaVerticalCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaVerticalCellReactor.swift; sourceTree = "<group>"; };
 		E06A8DED200B43E200A70FB1 /* LiveListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListViewController.swift; sourceTree = "<group>"; };
 		E06A8DEF200B43F100A70FB1 /* RecommendParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendParentViewController.swift; sourceTree = "<group>"; };
-		E06A8DF1200B442C00A70FB1 /* HomeFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFilmViewController.swift; sourceTree = "<group>"; };
 		E06A8DF3200B443B00A70FB1 /* DramaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewController.swift; sourceTree = "<group>"; };
-		E06A8DF5200B444B00A70FB1 /* HomeColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnViewController.swift; sourceTree = "<group>"; };
 		E06A8DF9200B62B400A70FB1 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		E06A9C1020F83A41005D3EDE /* BranchSectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSectionDelegate.swift; sourceTree = "<group>"; };
 		E07348792009BA6E00ACA8F7 /* SwiftBilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E073488D2009BA6E00ACA8F7 /* SwiftBilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07348912009BA6E00ACA8F7 /* SwiftBilibiliTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBilibiliTests.swift; sourceTree = "<group>"; };
@@ -364,7 +392,6 @@
 		E07348CD200A113100ACA8F7 /* Moya+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+Rx.swift"; sourceTree = "<group>"; };
 		E07348D1200A13FE00ACA8F7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		E07348D3200A141F00ACA8F7 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
-		E073A4352057AC9A003576A0 /* WRNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRNavigationBar.swift; sourceTree = "<group>"; };
 		E073F30020515AEE00BC9132 /* BilibiliBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliBannerCell.swift; sourceTree = "<group>"; };
 		E073F30220515ECB00BC9132 /* BilibiliBannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliBannerModel.swift; sourceTree = "<group>"; };
 		E074A7A9200C91ED00E6363C /* NetAnimationLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetAnimationLoadable.swift; sourceTree = "<group>"; };
@@ -375,18 +402,17 @@
 		E074A7BD200CD74C00E6363C /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		E07D61172061F133004D99E9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E07D611D20622AE6004D99E9 /* BilibiliToaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliToaster.swift; sourceTree = "<group>"; };
-		E07D611F20634E0F004D99E9 /* LiveBeautyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBeautyCell.swift; sourceTree = "<group>"; };
-		E07D612120634E33004D99E9 /* LiveBeautyCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBeautyCellReactor.swift; sourceTree = "<group>"; };
 		E089A31C20886C03000FD77E /* TypeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTransform.swift; sourceTree = "<group>"; };
+		E08F319820F494AA00390E79 /* BranchViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchViewSection.swift; sourceTree = "<group>"; };
+		E08F319B20F4959C00390E79 /* BranchSpecialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSpecialCell.swift; sourceTree = "<group>"; };
+		E08F319D20F4D9E100390E79 /* BranchSpecialCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSpecialCellReactor.swift; sourceTree = "<group>"; };
 		E09F513F206B812D009ABB0D /* LWPlayerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LWPlayerDelegate.swift; sourceTree = "<group>"; };
 		E09F5140206B812D009ABB0D /* LWPlayerEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LWPlayerEnum.swift; sourceTree = "<group>"; };
 		E09F5146206B8146009ABB0D /* LWPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWPlayer.swift; sourceTree = "<group>"; };
 		E09F5148206B849C009ABB0D /* LWPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWPlayerView.swift; sourceTree = "<group>"; };
 		E09F514B206B921B009ABB0D /* AVPlayer+LWPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+LWPlayer.swift"; sourceTree = "<group>"; };
-		E0A91ABC2064AD6200914B4B /* LiveBeautyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBeautyViewController.swift; sourceTree = "<group>"; };
 		E0A91ABE2064CA9D00914B4B /* LiveAllParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAllParentViewController.swift; sourceTree = "<group>"; };
 		E0A91AC02064CB8500914B4B /* LivePartitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePartitionViewController.swift; sourceTree = "<group>"; };
-		E0A91AC22064D24900914B4B /* LiveBeautyViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBeautyViewReactor.swift; sourceTree = "<group>"; };
 		E0A9E5D52046B52B00012FC7 /* LiveListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListHeaderView.swift; sourceTree = "<group>"; };
 		E0A9E5D72046B5DB00012FC7 /* LiveListPartitionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListPartitionHeaderView.swift; sourceTree = "<group>"; };
 		E0A9E5D92046B60200012FC7 /* LiveListPartitionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveListPartitionHeaderView.xib; sourceTree = "<group>"; };
@@ -405,8 +431,6 @@
 		E0C15A652043AAB80072F354 /* LiveAvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAvCell.swift; sourceTree = "<group>"; };
 		E0C15A672043B9610072F354 /* LiveListViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListViewSection.swift; sourceTree = "<group>"; };
 		E0C15A692043B9D40072F354 /* LiveAvCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAvCellReactor.swift; sourceTree = "<group>"; };
-		E0C15A6B2044025C0072F354 /* LiveBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBannerCell.swift; sourceTree = "<group>"; };
-		E0C15A6D2044052D0072F354 /* LiveBannerCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBannerCellReactor.swift; sourceTree = "<group>"; };
 		E0C15A6F204409550072F354 /* LiveListSectionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListSectionReactor.swift; sourceTree = "<group>"; };
 		E0C15A71204537870072F354 /* LiveListSectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListSectionDelegate.swift; sourceTree = "<group>"; };
 		E0C15A7320455AB90072F354 /* LiveListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListFooterView.swift; sourceTree = "<group>"; };
@@ -448,22 +472,18 @@
 		E0CFAE4720722B880039D761 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		E0CFAE4920722B950039D761 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		E0CFAE4B20722B9F0039D761 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E0D7A21120F3165700933D6B /* BranchViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchViewReactor.swift; sourceTree = "<group>"; };
 		E0D942D5204792E8000D2C66 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E0D942D7204792FC000D2C66 /* SearchBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarView.xib; sourceTree = "<group>"; };
-		E0D942DE20480F3F000D2C66 /* LiveListStarShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListStarShowView.swift; sourceTree = "<group>"; };
-		E0D942E020481085000D2C66 /* LiveListStarShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListStarShowCell.swift; sourceTree = "<group>"; };
-		E0D942E220481092000D2C66 /* LiveListStarShowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveListStarShowCell.xib; sourceTree = "<group>"; };
-		E0D942E8204AE12D000D2C66 /* LiveListStarShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveListStarShowView.xib; sourceTree = "<group>"; };
-		E0D942EA204AEDA8000D2C66 /* LiveListCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListCategoryView.swift; sourceTree = "<group>"; };
 		E0DE1A8E200C7C80007D8AFE /* LoadingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPlugin.swift; sourceTree = "<group>"; };
 		E0E6449E206CF112007D105F /* LWPlayerFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWPlayerFullScreenViewController.swift; sourceTree = "<group>"; };
 		E0EFB9D020522D5100F6B744 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		E0F23980204E5F2C00AE9537 /* BilibiliButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliButton.swift; sourceTree = "<group>"; };
 		E0F23982204E860400AE9537 /* UILabel+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Rx.swift"; sourceTree = "<group>"; };
 		E0FB8BDF205CF8D900757830 /* DramaViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewReactor.swift; sourceTree = "<group>"; };
 		E0FB8BE1205CF92300757830 /* DramaViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewSection.swift; sourceTree = "<group>"; };
 		E0FB8BE3205CF93800757830 /* DramaSectionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaSectionReactor.swift; sourceTree = "<group>"; };
 		E0FB8BE5205CF97C00757830 /* DramaSectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaSectionDelegate.swift; sourceTree = "<group>"; };
+		E0FD209820F5F02D00EBE828 /* BranchSectionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSectionReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -526,6 +546,24 @@
 				B200674728303B6A037150D5 /* Pods_SwiftBilibili.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E002129321461007004D5EF0 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				E002129421461007004D5EF0 /* BilibiliButton.swift */,
+				E002129521461007004D5EF0 /* CountDownButton.swift */,
+				E00212982146102B004D5EF0 /* VerticalButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		E016714B20FF3A0D00FF3A1E /* CollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E016714C20FF3AB600FF3A1E /* BilibiliCollectionViewLayout.swift */,
+			);
+			path = CollectionViewLayout;
 			sourceTree = "<group>";
 		};
 		E01AFD732029DA8C0061B761 /* EmptyView */ = {
@@ -601,12 +639,11 @@
 			path = BannerView;
 			sourceTree = "<group>";
 		};
-		E0312F9820D1083200AF2249 /* CountDownButton */ = {
+		E030B88920E1E27A00861572 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				E0312F9920D1084500AF2249 /* CountDownButton.swift */,
 			);
-			path = CountDownButton;
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		E03BAC4520C67DB500004796 /* Constants */ = {
@@ -624,20 +661,13 @@
 			children = (
 				E0C15A652043AAB80072F354 /* LiveAvCell.swift */,
 				E0C15A692043B9D40072F354 /* LiveAvCellReactor.swift */,
-				E07D611F20634E0F004D99E9 /* LiveBeautyCell.swift */,
-				E07D612120634E33004D99E9 /* LiveBeautyCellReactor.swift */,
-				E0C15A6B2044025C0072F354 /* LiveBannerCell.swift */,
-				E0C15A6D2044052D0072F354 /* LiveBannerCellReactor.swift */,
+				E02C025520ECA06E00520164 /* LiveHourRankCell.swift */,
 				E027D8552068C57700FBA44A /* LiveRoundRoomCell.swift */,
 				E027D8572068C59300FBA44A /* LiveRoundRoomCellReactor.swift */,
-				E0D942EA204AEDA8000D2C66 /* LiveListCategoryView.swift */,
 				E0A9E5D52046B52B00012FC7 /* LiveListHeaderView.swift */,
+				E002129121450DA4004D5EF0 /* LiveTagView.swift */,
 				E0A9E5D72046B5DB00012FC7 /* LiveListPartitionHeaderView.swift */,
 				E0A9E5D92046B60200012FC7 /* LiveListPartitionHeaderView.xib */,
-				E0D942DE20480F3F000D2C66 /* LiveListStarShowView.swift */,
-				E0D942E8204AE12D000D2C66 /* LiveListStarShowView.xib */,
-				E0D942E020481085000D2C66 /* LiveListStarShowCell.swift */,
-				E0D942E220481092000D2C66 /* LiveListStarShowCell.xib */,
 				E0C15A7320455AB90072F354 /* LiveListFooterView.swift */,
 				E0C15A7520455AD50072F354 /* LiveListFooterView.xib */,
 			);
@@ -651,6 +681,7 @@
 				E062B649209AACCA0055099E /* DefaultsKeys+Key.swift */,
 				E062B64A209AACCA0055099E /* UIColor+Hex.swift */,
 				E062B64B209AACCA0055099E /* UIImageView+Kingfisher.swift */,
+				E025D7B420EB7F320067573F /* UIButton+Kingfisher.swift */,
 				E062B64C209AACCA0055099E /* DispatchQueue+Extension.swift */,
 				E062B64E209AACCA0055099E /* String+BoundingRect.swift */,
 				E062B64F209AACCA0055099E /* UIImage+Placeholder.swift */,
@@ -663,6 +694,7 @@
 				E062B656209AACCA0055099E /* NSAttributedString+BoundingRect.swift */,
 				E062B657209AACCA0055099E /* VTContentView+Gesture.swift */,
 				E025878920DB8FB900E96927 /* UIScrollView+Direction.swift */,
+				E0421E35213E349C00AA8ADE /* UIViewController+NetAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -670,7 +702,6 @@
 		E06660692054E201004C5EB9 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				E0CFAE4D207467380039D761 /* Resources */,
 				E09F514A206B9200009ABB0D /* Extension */,
 				E09F5141206B812D009ABB0D /* Component */,
 				E09F513D206B812C009ABB0D /* Core */,
@@ -697,22 +728,6 @@
 			path = Drama;
 			sourceTree = "<group>";
 		};
-		E06A8DE8200B43A500A70FB1 /* Film */ = {
-			isa = PBXGroup;
-			children = (
-				E06A8DF1200B442C00A70FB1 /* HomeFilmViewController.swift */,
-			);
-			path = Film;
-			sourceTree = "<group>";
-		};
-		E06A8DE9200B43A500A70FB1 /* Column */ = {
-			isa = PBXGroup;
-			children = (
-				E06A8DF5200B444B00A70FB1 /* HomeColumnViewController.swift */,
-			);
-			path = Column;
-			sourceTree = "<group>";
-		};
 		E06A8DEA200B43A500A70FB1 /* Drama */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,10 +743,9 @@
 			children = (
 				E06A8DED200B43E200A70FB1 /* LiveListViewController.swift */,
 				E0C15A632043A6C80072F354 /* LiveListViewReactor.swift */,
-				E0A91ABC2064AD6200914B4B /* LiveBeautyViewController.swift */,
-				E0A91AC22064D24900914B4B /* LiveBeautyViewReactor.swift */,
 				E0A91ABE2064CA9D00914B4B /* LiveAllParentViewController.swift */,
 				E027D8532068906B00FBA44A /* LiveAllViewController.swift */,
+				E02AB9F520E4DFAC0041DD6C /* LiveAllViewReactor.swift */,
 				E0A91AC02064CB8500914B4B /* LivePartitionViewController.swift */,
 				E0020C41206A49F3003908FF /* LiveRoomViewController.swift */,
 			);
@@ -744,7 +758,6 @@
 				E06A8DEF200B43F100A70FB1 /* RecommendParentViewController.swift */,
 				E074A7B7200CCE3300E6363C /* TogetherViewController.swift */,
 				E026ADDB2011DB4A00C4C5D9 /* TogetherViewReactor.swift */,
-				E0C2662F2053BF5500CD4AD9 /* BranchViewController.swift */,
 				E031918D20945DB80076A377 /* RankParentViewController.swift */,
 				E0C266312053C28300CD4AD9 /* RankViewController.swift */,
 				E031918720944EFE0076A377 /* RankViewReactor.swift */,
@@ -846,7 +859,6 @@
 			children = (
 				E01DED66200E4AFA00ADCBAE /* RequestError.swift */,
 				E07348D1200A13FE00ACA8F7 /* Networking.swift */,
-				E07348D3200A141F00ACA8F7 /* HomeAPI.swift */,
 				E0BA072820CE6DF60061E2DD /* NetEnvironment.swift */,
 				E0DE1A8D200C7C68007D8AFE /* Plugins */,
 			);
@@ -879,6 +891,7 @@
 		E07348C1200A0B1B00ACA8F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E07348D3200A141F00ACA8F7 /* HomeAPI.swift */,
 				E0CDF481200A56C900D1BCD8 /* HomeService.swift */,
 			);
 			path = Services;
@@ -910,6 +923,9 @@
 				E0CDF495200A657A00D1BCD8 /* MainTabBarController.swift */,
 				E0CDF4BC200A6AA500D1BCD8 /* MainTabBarViewReactor.swift */,
 				E0AE8B112050EB940063C532 /* BilibiliWebViewController.swift */,
+				E030B8BE20E22D4100861572 /* BilibiliArticleViewController.swift */,
+				E0297C7920E3221700DAE979 /* BilibiliArticleNavBar.swift */,
+				E0297C7B20E3222600DAE979 /* BilibiliArticleNavBar.xib */,
 				E07D61172061F133004D99E9 /* LoginViewController.swift */,
 				E0EFB9D020522D5100F6B744 /* TestViewController.swift */,
 			);
@@ -939,14 +955,6 @@
 			path = Rx;
 			sourceTree = "<group>";
 		};
-		E073A4342057AC63003576A0 /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				E073A4352057AC9A003576A0 /* WRNavigationBar.swift */,
-			);
-			path = NavigationBar;
-			sourceTree = "<group>";
-		};
 		E074A7AF200CA62C00E6363C /* ImageViewAnimation */ = {
 			isa = PBXGroup;
 			children = (
@@ -971,6 +979,30 @@
 				E07D611D20622AE6004D99E9 /* BilibiliToaster.swift */,
 			);
 			path = Toaster;
+			sourceTree = "<group>";
+		};
+		E08F319720F4945F00390E79 /* Branch */ = {
+			isa = PBXGroup;
+			children = (
+				E0C2662F2053BF5500CD4AD9 /* BranchViewController.swift */,
+				E0D7A21120F3165700933D6B /* BranchViewReactor.swift */,
+			);
+			path = Branch;
+			sourceTree = "<group>";
+		};
+		E08F319A20F4954E00390E79 /* Branch */ = {
+			isa = PBXGroup;
+			children = (
+				E08F319B20F4959C00390E79 /* BranchSpecialCell.swift */,
+				E08F319D20F4D9E100390E79 /* BranchSpecialCellReactor.swift */,
+				E04CA7BA20F9E973009A9CB3 /* BranchPlayerCell.swift */,
+				E04CA7BC20F9E98E009A9CB3 /* BranchPlayerCellReactor.swift */,
+				E002128D214267B0004D5EF0 /* BranchEntranceCell.swift */,
+				E002128F214267D7004D5EF0 /* BranchEntranceCellReactor.swift */,
+				E04CA7B620F9D877009A9CB3 /* BranchHeaderView.swift */,
+				E04CA7B820F9D9E5009A9CB3 /* BranchPartitionView.swift */,
+			);
+			path = Branch;
 			sourceTree = "<group>";
 		};
 		E09F513D206B812C009ABB0D /* Core */ = {
@@ -1033,26 +1065,9 @@
 		E0CDF499200A68C100D1BCD8 /* Attention */ = {
 			isa = PBXGroup;
 			children = (
-				E0CDF49A200A68C100D1BCD8 /* Sections */,
-				E0CDF49B200A68C100D1BCD8 /* Models */,
 				E0CDF49C200A68C100D1BCD8 /* Controllers */,
-				E0CDF49D200A68C100D1BCD8 /* Views */,
 			);
 			path = Attention;
-			sourceTree = "<group>";
-		};
-		E0CDF49A200A68C100D1BCD8 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		E0CDF49B200A68C100D1BCD8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E0CDF49C200A68C100D1BCD8 /* Controllers */ = {
@@ -1061,13 +1076,6 @@
 				E0CDF4B8200A6A6600D1BCD8 /* AttentionListViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E0CDF49D200A68C100D1BCD8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		E0CDF49E200A68C100D1BCD8 /* Mine */ = {
@@ -1113,26 +1121,9 @@
 		E0CDF4A3200A68C100D1BCD8 /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				E0CDF4A4200A68C100D1BCD8 /* Sections */,
-				E0CDF4A5200A68C100D1BCD8 /* Models */,
 				E0CDF4A6200A68C100D1BCD8 /* Controllers */,
-				E0CDF4A7200A68C100D1BCD8 /* Views */,
 			);
 			path = Discovery;
-			sourceTree = "<group>";
-		};
-		E0CDF4A4200A68C100D1BCD8 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		E0CDF4A5200A68C100D1BCD8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E0CDF4A6200A68C100D1BCD8 /* Controllers */ = {
@@ -1143,36 +1134,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E0CDF4A7200A68C100D1BCD8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		E0CDF4A8200A68C200D1BCD8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				E0CDF4A9200A68C200D1BCD8 /* Sections */,
-				E0CDF4AA200A68C200D1BCD8 /* Models */,
 				E0CDF4AB200A68C200D1BCD8 /* Controllers */,
-				E0CDF4AC200A68C200D1BCD8 /* Views */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		E0CDF4A9200A68C200D1BCD8 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		E0CDF4AA200A68C200D1BCD8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E0CDF4AB200A68C200D1BCD8 /* Controllers */ = {
@@ -1181,13 +1148,6 @@
 				E0CDF4B6200A6A5500D1BCD8 /* CategoryListViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E0CDF4AC200A68C200D1BCD8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		E0CDF4AD200A68C200D1BCD8 /* Home */ = {
@@ -1214,6 +1174,9 @@
 				E0FB8BE1205CF92300757830 /* DramaViewSection.swift */,
 				E0FB8BE3205CF93800757830 /* DramaSectionReactor.swift */,
 				E0FB8BE5205CF97C00757830 /* DramaSectionDelegate.swift */,
+				E08F319820F494AA00390E79 /* BranchViewSection.swift */,
+				E0FD209820F5F02D00EBE828 /* BranchSectionReactor.swift */,
+				E06A9C1020F83A41005D3EDE /* BranchSectionDelegate.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -1224,8 +1187,10 @@
 				E01DC7C02016CA6200B5F5DA /* TogetherRealmModel.swift */,
 				E01DED64200E3E6500ADCBAE /* RecommendTogetherModel.swift */,
 				E0C2662D2053B93000CD4AD9 /* RecommendBranchModel.swift */,
+				E025C27720EE1006008CAB27 /* BranchDataModel.swift */,
 				E048C8EB2041631A0073452B /* LiveTotalModel.swift */,
 				E069C42D205A0A3C00697634 /* DramaTotalModel.swift */,
+				E025D7B620EB86430067573F /* LiveAllModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1234,9 +1199,8 @@
 			isa = PBXGroup;
 			children = (
 				E0CDF4B2200A69B100D1BCD8 /* HomeParentViewController.swift */,
-				E06A8DE9200B43A500A70FB1 /* Column */,
+				E08F319720F4945F00390E79 /* Branch */,
 				E06A8DEA200B43A500A70FB1 /* Drama */,
-				E06A8DE8200B43A500A70FB1 /* Film */,
 				E06A8DEB200B43A500A70FB1 /* Live */,
 				E06A8DEC200B43A500A70FB1 /* Recommend */,
 			);
@@ -1248,18 +1212,12 @@
 			children = (
 				E02AB6EC20D9F14B00822D06 /* HomeNavBar.swift */,
 				E02AB8D120DA4D9600822D06 /* HomeNavBar.xib */,
+				E08F319A20F4954E00390E79 /* Branch */,
 				E056A82E202AD32C00842589 /* Live */,
 				E01F0693200F9F60008E3251 /* Recommend */,
 				E069C42F205A1BBE00697634 /* Drama */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E0CFAE4D207467380039D761 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		E0D942D4204792D4000D2C66 /* SearchBarView */ = {
@@ -1302,10 +1260,10 @@
 		E0DE1A92200C7FE9007D8AFE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E0312F9820D1083200AF2249 /* CountDownButton */,
+				E002129321461007004D5EF0 /* Button */,
+				E016714B20FF3A0D00FF3A1E /* CollectionViewLayout */,
+				E030B88920E1E27A00861572 /* NavigationBar */,
 				E07D611C20622AD8004D99E9 /* Toaster */,
-				E073A4342057AC63003576A0 /* NavigationBar */,
-				E0F2397F204E5F1100AE9537 /* BilibiliButton */,
 				E0A9F67A204BD76800409736 /* GesConflictCollectionView */,
 				E0D942D4204792D4000D2C66 /* SearchBarView */,
 				E01AFD732029DA8C0061B761 /* EmptyView */,
@@ -1315,14 +1273,6 @@
 				E074A7B1200CA62C00E6363C /* RefreshHeaderAnimation */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		E0F2397F204E5F1100AE9537 /* BilibiliButton */ = {
-			isa = PBXGroup;
-			children = (
-				E0F23980204E5F2C00AE9537 /* BilibiliButton.swift */,
-			);
-			path = BilibiliButton;
 			sourceTree = "<group>";
 		};
 		E2DA0B16B9296C2A018A24A8 /* Pods */ = {
@@ -1346,7 +1296,6 @@
 				E07348762009BA6E00ACA8F7 /* Frameworks */,
 				E07348772009BA6E00ACA8F7 /* Resources */,
 				30F0C03BFD597399C0A79E02 /* [CP] Embed Pods Frameworks */,
-				E02027089D6D3A0A151A7238 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1445,7 +1394,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07348BC200A05C500ACA8F7 /* LaunchScreen.storyboard in Resources */,
-				E0D942E320481092000D2C66 /* LiveListStarShowCell.xib in Resources */,
 				E07348BB200A05C500ACA8F7 /* Assets.xcassets in Resources */,
 				E023587A202585C600B03502 /* TogetherDislikeFooter.xib in Resources */,
 				E01AFD772029DAB70061B761 /* EmptyView.xib in Resources */,
@@ -1459,7 +1407,7 @@
 				E01AFD712029560C0061B761 /* TogetherDislikeMaskView.xib in Resources */,
 				E01F069A200F9F60008E3251 /* RecommendRightItemView.xib in Resources */,
 				E0BE76F72085A7A600D0FBCD /* DramaSectionTopView.xib in Resources */,
-				E0D942E9204AE12D000D2C66 /* LiveListStarShowView.xib in Resources */,
+				E0297C7C20E3222600DAE979 /* BilibiliArticleNavBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1592,21 +1540,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E02027089D6D3A0A151A7238 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBilibili/Pods-SwiftBilibili-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1618,12 +1551,16 @@
 				E02122542024D47400B5F490 /* MineListViewController.swift in Sources */,
 				E025878A20DB8FB900E96927 /* UIScrollView+Direction.swift in Sources */,
 				E031918E20945DB80076A377 /* RankParentViewController.swift in Sources */,
+				E08F319920F494AA00390E79 /* BranchViewSection.swift in Sources */,
+				E04CA7BB20F9E973009A9CB3 /* BranchPlayerCell.swift in Sources */,
 				E069C42E205A0A3C00697634 /* DramaTotalModel.swift in Sources */,
 				E0C15A682043B9610072F354 /* LiveListViewSection.swift in Sources */,
 				E07348CE200A113100ACA8F7 /* Moya+Rx.swift in Sources */,
 				E01AFD752029DAA20061B761 /* EmptyView.swift in Sources */,
+				E016714D20FF3AB600FF3A1E /* BilibiliCollectionViewLayout.swift in Sources */,
 				E02AB8D020DA29DE00822D06 /* TVHeaderAnimator.swift in Sources */,
 				E01F069B200F9F60008E3251 /* RecommendRightItemView.swift in Sources */,
+				E002129721461007004D5EF0 /* CountDownButton.swift in Sources */,
 				E0C1BB04200D9B48007D7E5B /* URLNavigationMap.swift in Sources */,
 				E0CDF4B5200A6A4200D1BCD8 /* DiscoveryListViewController.swift in Sources */,
 				E062B662209AACCB0055099E /* UIBarButtonItem+FixSpace.swift in Sources */,
@@ -1641,53 +1578,57 @@
 				E07D61182061F133004D99E9 /* LoginViewController.swift in Sources */,
 				E026ADD4201190A000C4C5D9 /* TogetherAdCellReactor.swift in Sources */,
 				E01F069D200F9FAE008E3251 /* TogetherParentCell.swift in Sources */,
-				E07D612020634E0F004D99E9 /* LiveBeautyCell.swift in Sources */,
 				E07348C8200A104700ACA8F7 /* ModelStream.swift in Sources */,
-				E0D942E120481085000D2C66 /* LiveListStarShowCell.swift in Sources */,
+				E030B8BF20E22D4100861572 /* BilibiliArticleViewController.swift in Sources */,
 				E048C8EC2041631A0073452B /* LiveTotalModel.swift in Sources */,
 				E07348BD200A05C500ACA8F7 /* AppDelegate.swift in Sources */,
-				E0C15A6C2044025C0072F354 /* LiveBannerCell.swift in Sources */,
 				E0AE8B122050EB940063C532 /* BilibiliWebViewController.swift in Sources */,
 				E0AE8B2B205124460063C532 /* TogetherSpecialCell.swift in Sources */,
 				E0BA072920CE6DF60061E2DD /* NetEnvironment.swift in Sources */,
 				E056206820884EEE00D33C37 /* DramaRcmdCell.swift in Sources */,
+				E0FD209920F5F02D00EBE828 /* BranchSectionReactor.swift in Sources */,
 				E01F0690200F9502008E3251 /* DurationTransform.swift in Sources */,
 				E0FB8BE4205CF93800757830 /* DramaSectionReactor.swift in Sources */,
 				E056206A208861C900D33C37 /* DramaRcmdCellReactor.swift in Sources */,
 				E0CDF4B9200A6A6600D1BCD8 /* AttentionListViewController.swift in Sources */,
-				E0D942DF20480F3F000D2C66 /* LiveListStarShowView.swift in Sources */,
 				E07348D4200A141F00ACA8F7 /* HomeAPI.swift in Sources */,
+				E06A9C1120F83A41005D3EDE /* BranchSectionDelegate.swift in Sources */,
+				E04CA7B920F9D9E5009A9CB3 /* BranchPartitionView.swift in Sources */,
 				E0BE76F92085C83E00D0FBCD /* LocalManager.swift in Sources */,
 				E0FB8BE6205CF97C00757830 /* DramaSectionDelegate.swift in Sources */,
 				E074A7B4200CA6B600E6363C /* DanceHeaderAnimator.swift in Sources */,
 				E0A91ABF2064CA9D00914B4B /* LiveAllParentViewController.swift in Sources */,
+				E0297C7A20E3221700DAE979 /* BilibiliArticleNavBar.swift in Sources */,
 				E0CFAE2A2071D8F40039D761 /* LWPlayerSlider.swift in Sources */,
 				E062B664209AACCB0055099E /* UIView+CornerRadius.swift in Sources */,
+				E02C025620ECA06E00520164 /* LiveHourRankCell.swift in Sources */,
 				E062B65D209AACCB0055099E /* DispatchQueue+Extension.swift in Sources */,
 				E074A7B8200CCE3300E6363C /* TogetherViewController.swift in Sources */,
 				E0231E872018964C005832EA /* PopOverView.swift in Sources */,
-				E0A91AC32064D24900914B4B /* LiveBeautyViewReactor.swift in Sources */,
 				E07348C6200A0B4E00ACA8F7 /* ModelType.swift in Sources */,
 				E0C15A70204409550072F354 /* LiveListSectionReactor.swift in Sources */,
 				E062B65A209AACCB0055099E /* DefaultsKeys+Key.swift in Sources */,
 				E026ADDC2011DB4A00C4C5D9 /* TogetherViewReactor.swift in Sources */,
+				E0421E36213E349C00AA8ADE /* UIViewController+NetAnimation.swift in Sources */,
 				E0CDF484200A5AC600D1BCD8 /* BaseViewController.swift in Sources */,
 				E09F5149206B849C009ABB0D /* LWPlayerView.swift in Sources */,
 				E07348CC200A10D500ACA8F7 /* Logger.swift in Sources */,
+				E0021290214267D7004D5EF0 /* BranchEntranceCellReactor.swift in Sources */,
 				E062B665209AACCB0055099E /* UIScrollView+ScrollToBottom.swift in Sources */,
 				E0F23983204E860400AE9537 /* UILabel+Rx.swift in Sources */,
 				E0CDF482200A56C900D1BCD8 /* HomeService.swift in Sources */,
-				E0312F9A20D1084500AF2249 /* CountDownButton.swift in Sources */,
 				E0CDF4B7200A6A5500D1BCD8 /* CategoryListViewController.swift in Sources */,
 				E062B661209AACCB0055099E /* UIBarButtonItem+Init.swift in Sources */,
+				E002128E214267B0004D5EF0 /* BranchEntranceCell.swift in Sources */,
 				E069C439205A430200697634 /* DramaReviewCellReactor.swift in Sources */,
 				E01F068E200EFF75008E3251 /* NumberTransform.swift in Sources */,
 				E0C8494A206E3F33007A4FD2 /* LWPlayerUtils.swift in Sources */,
 				E01F2402204FDC8500090539 /* TogetherArticleCell.swift in Sources */,
+				E025D7B520EB7F320067573F /* UIButton+Kingfisher.swift in Sources */,
 				E027D8542068906B00FBA44A /* LiveAllViewController.swift in Sources */,
-				E07D612220634E33004D99E9 /* LiveBeautyCellReactor.swift in Sources */,
 				E026ADE620143E0800C4C5D9 /* NotificationCenter+Rx.swift in Sources */,
 				E0CDF496200A657A00D1BCD8 /* MainTabBarController.swift in Sources */,
+				E00212992146102B004D5EF0 /* VerticalButton.swift in Sources */,
 				E062B667209AACCB0055099E /* NSAttributedString+BoundingRect.swift in Sources */,
 				E06A8DEE200B43E200A70FB1 /* LiveListViewController.swift in Sources */,
 				E074A7AA200C91ED00E6363C /* NetAnimationLoadable.swift in Sources */,
@@ -1713,14 +1654,16 @@
 				E062B660209AACCB0055099E /* UIImage+Placeholder.swift in Sources */,
 				E02AB6ED20D9F14B00822D06 /* HomeNavBar.swift in Sources */,
 				E026ADE82014467F00C4C5D9 /* BaseCollectionViewController.swift in Sources */,
-				E073A4362057AC9A003576A0 /* WRNavigationBar.swift in Sources */,
 				E09F5144206B812D009ABB0D /* LWPlayerEnum.swift in Sources */,
+				E025D7B720EB86430067573F /* LiveAllModel.swift in Sources */,
 				E021E7192086DC660034242E /* BilibiliRouter.swift in Sources */,
 				E0EFB9D120522D5100F6B744 /* TestViewController.swift in Sources */,
+				E04CA7BD20F9E98E009A9CB3 /* BranchPlayerCellReactor.swift in Sources */,
 				E09F5147206B8146009ABB0D /* LWPlayer.swift in Sources */,
 				E074A7BE200CD74C00E6363C /* NibLoadable.swift in Sources */,
 				E027D8582068C59300FBA44A /* LiveRoundRoomCellReactor.swift in Sources */,
 				E026ADDA2011CDE600C4C5D9 /* TogetherSectionDelegate.swift in Sources */,
+				E002129221450DA4004D5EF0 /* LiveTagView.swift in Sources */,
 				E048C8E2204137070073452B /* Refreshable.swift in Sources */,
 				E01FC6662015D37D00F1CCF7 /* RealmManager.swift in Sources */,
 				E0228FEC202433D400D1A55A /* PopOverViewCell.swift in Sources */,
@@ -1734,7 +1677,6 @@
 				E069C433205A22F200697634 /* DramaReviewCell.swift in Sources */,
 				E01DED67200E4AFA00ADCBAE /* RequestError.swift in Sources */,
 				E06A8DFA200B62B400A70FB1 /* MainNavigationController.swift in Sources */,
-				E06A8DF6200B444B00A70FB1 /* HomeColumnViewController.swift in Sources */,
 				E026ADEF2014A76600C4C5D9 /* TogetherBannerCell.swift in Sources */,
 				E027D8562068C57700FBA44A /* LiveRoundRoomCell.swift in Sources */,
 				E0A9F67C204BD78B00409736 /* GesConflictCollectionView.swift in Sources */,
@@ -1753,15 +1695,15 @@
 				E0C4C7F120230F8800241BA1 /* UIView+Rx.swift in Sources */,
 				E026ADDE2013362200C4C5D9 /* PullToRefresh+Rx.swift in Sources */,
 				E062B65B209AACCB0055099E /* UIColor+Hex.swift in Sources */,
+				E08F319C20F4959C00390E79 /* BranchSpecialCell.swift in Sources */,
 				E031918620944AF20076A377 /* BaseTableViewController.swift in Sources */,
 				E06A8DF0200B43F100A70FB1 /* RecommendParentViewController.swift in Sources */,
 				E01F0685200EE222008E3251 /* BaseCollectionViewCell.swift in Sources */,
-				E0A91ABD2064AD6200914B4B /* LiveBeautyViewController.swift in Sources */,
 				E0CFAE282071D2B70039D761 /* Timer+LWPlayer.swift in Sources */,
-				E0D942EB204AEDA8000D2C66 /* LiveListCategoryView.swift in Sources */,
-				E0C15A6E2044052D0072F354 /* LiveBannerCellReactor.swift in Sources */,
 				E07348D2200A13FE00ACA8F7 /* Networking.swift in Sources */,
 				E0C15A6A2043B9D40072F354 /* LiveAvCellReactor.swift in Sources */,
+				E0D7A21220F3165700933D6B /* BranchViewReactor.swift in Sources */,
+				E04CA7B720F9D877009A9CB3 /* BranchHeaderView.swift in Sources */,
 				E062B65C209AACCB0055099E /* UIImageView+Kingfisher.swift in Sources */,
 				E0CDF486200A5D1000D1BCD8 /* UIScrollView+Rx.swift in Sources */,
 				E062B658209AACCB0055099E /* Data+Cache.swift in Sources */,
@@ -1771,15 +1713,14 @@
 				E0C266322053C28300CD4AD9 /* RankViewController.swift in Sources */,
 				E0CFAE2E207221D80039D761 /* LWPlayerManager.swift in Sources */,
 				E02401B6204E244C00C9C33E /* TogetherDataManager.swift in Sources */,
-				E06A8DF2200B442C00A70FB1 /* HomeFilmViewController.swift in Sources */,
 				E026D0E12028420300B2CEF2 /* ProcessTimeManager.swift in Sources */,
 				E026ADD220118CE300C4C5D9 /* TogetherAdCell.swift in Sources */,
 				E0235878202585B700B03502 /* TogetherDislikeFooter.swift in Sources */,
 				E01F0689200EEAEC008E3251 /* BorderedLayer.swift in Sources */,
 				E0C266302053BF5500CD4AD9 /* BranchViewController.swift in Sources */,
-				E0F23981204E5F2C00AE9537 /* BilibiliButton.swift in Sources */,
 				E069C43B205A431200697634 /* DramaVerticalCellReactor.swift in Sources */,
 				E0BA072E20CE80E50061E2DD /* SplashViewController.swift in Sources */,
+				E02AB9F620E4DFAC0041DD6C /* LiveAllViewReactor.swift in Sources */,
 				E0A91AC12064CB8500914B4B /* LivePartitionViewController.swift in Sources */,
 				E073F30120515AEE00BC9132 /* BilibiliBannerCell.swift in Sources */,
 				E026ADE02013422400C4C5D9 /* TogetherTipCell.swift in Sources */,
@@ -1790,10 +1731,13 @@
 				E074A7B6200CC72200E6363C /* RabbitHeaderAnimator.swift in Sources */,
 				E01DC7C12016CA6200B5F5DA /* TogetherRealmModel.swift in Sources */,
 				E0BA072C20CE7D240061E2DD /* SplashModel.swift in Sources */,
+				E002129621461007004D5EF0 /* BilibiliButton.swift in Sources */,
 				E026ADF12014A88000C4C5D9 /* TogetherBannerCellReactor.swift in Sources */,
+				E025C27820EE1006008CAB27 /* BranchDataModel.swift in Sources */,
 				E062B663209AACCB0055099E /* Array+SectionModel.swift in Sources */,
 				E069C435205A238C00697634 /* DramaVerticalCell.swift in Sources */,
 				E0C15A642043A6C80072F354 /* LiveListViewReactor.swift in Sources */,
+				E08F319E20F4D9E100390E79 /* BranchSpecialCellReactor.swift in Sources */,
 				E0231E8920189736005832EA /* PopOverViewSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

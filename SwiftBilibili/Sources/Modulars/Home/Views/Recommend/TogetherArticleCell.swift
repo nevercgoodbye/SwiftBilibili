@@ -20,7 +20,7 @@ final class TogetherArticleCell: TogetherParentCell,View {
         $0.setTitleColor(.db_white, for: .normal)
         $0.titleLabel?.font = Font.SysFont.sys_10
         $0.isUserInteractionEnabled = false
-        $0.setImage(Image.Home.play, for: .normal)
+        $0.setImage(Image.Home.playTime, for: .normal)
         $0.contentHorizontalAlignment = .left
         $0.imagePosition = .left
         $0.imageSize = CGSize(width: 12, height: 12)

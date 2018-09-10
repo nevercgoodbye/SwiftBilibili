@@ -23,7 +23,6 @@ final class TogetherViewReactor: Reactor,OutputRefreshProtocol {
             3.将模型里show字段下的数据都存下来
         */
     }
-    
     enum Mutation {
         case setLoading(Bool)
         case setTogethers([RecommendTogetherModel],Bool)
@@ -66,7 +65,7 @@ final class TogetherViewReactor: Reactor,OutputRefreshProtocol {
             }
             Defaults[.avIdx] = "\(refreshIdx)"
           }
-          return homeService.recommendTogetherList(refreshType: refreshType, idx:       Defaults[.avIdx],firstLoad: firstLoad,hash:self.hash)
+          return homeService.recommendTogetherList(refreshType: refreshType, idx: Defaults[.avIdx],firstLoad: firstLoad,hash:self.hash)
               .asObservable()
               .map{.setTogethers($0,firstLoad)}
 //              .catchError({ (error) -> Observable<TogetherViewReactor.Mutation> in
@@ -76,14 +75,15 @@ final class TogetherViewReactor: Reactor,OutputRefreshProtocol {
 //                return Observable.empty()
 //             })
         case .loadMore:
-            guard self.currentState.isLoading == false,
-                  let loadIdx = currentState.togetherModels.last?.idx
-            else {
+            
+            let loadIdx = currentState.togetherModels.last?.idx
+            
+            if self.currentState.isLoading || loadIdx == nil {
                 return .empty()
             }
             let startLoading = Observable.just(Mutation.setLoading(true))
             let endLoading = Observable.just(Mutation.setLoading(false))
-            let appendTogethers = homeService.recommendTogetherList(refreshType: .loadMore, idx: "\(loadIdx)",firstLoad:false,hash:self.hash).asObservable().map{Mutation.appendTogethers($0)}//.catchErrorJustReturn(.loadMoreError)
+            let appendTogethers = homeService.recommendTogetherList(refreshType: .loadMore, idx: "\(loadIdx!)",firstLoad:false,hash:self.hash).asObservable().map{Mutation.appendTogethers($0)}//.catchErrorJustReturn(.loadMoreError)
             return Observable.concat([startLoading,appendTogethers,endLoading])
         case .showAd:
             
@@ -162,7 +162,6 @@ final class TogetherViewReactor: Reactor,OutputRefreshProtocol {
                     state.sections?.remove(at: IndexPath(item: index, section: 0))
                 }
             }else{
-                
                 let togetherModel = state.togetherModels.filter{$0.idx == idx}.first
                 if var togetherModel = togetherModel,let index = index {
                     togetherModel.isDislike = dislikeModel == nil ? false : true
@@ -172,8 +171,7 @@ final class TogetherViewReactor: Reactor,OutputRefreshProtocol {
                     state.togetherModels[index] = togetherModel
                     let togetherSectionReactor = TogetherSectionReactor(togetherModels: state.togetherModels)
                     state.sections = [.together(togetherSectionReactor.currentState.sectionItems.map(TogetherViewSectionItem.together))]
-             }
-
+              }
             }
             return state
         case let .setWatchLater(idx,isCancle):

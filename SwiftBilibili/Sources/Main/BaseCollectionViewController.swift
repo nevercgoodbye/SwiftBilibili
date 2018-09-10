@@ -144,11 +144,8 @@ extension BaseCollectionViewController: UIScrollViewDelegate {
         
         guard self.collectionView.enableDirection,
               let homeParentVc = UIViewController.topMost?.parent as? HomeParentViewController
-            else { return }
+        else { return }
         
         homeParentVc.scrollViewDidScroll(scrollView)
     }
-    
-
-    
 }

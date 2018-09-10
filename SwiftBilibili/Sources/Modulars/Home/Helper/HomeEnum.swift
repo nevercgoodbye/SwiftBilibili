@@ -16,14 +16,21 @@ enum TogetherDataType : String {
     case login = "login"
     case rank = "rank"
     case av = "av"
-    case article = "article_s"
+    case article_rcmd = "article_s"
+    case article_branch = "article"
+    case player = "player"
     case banner = "banner"
     case bangumi = "bangumi"
     case live = "live"
     case audio = "audio"
     case special_s = "special_s"
+    case special = "special"
     case shopping_s = "shopping_s"
     case converge = "converge"
+    case content_rcmd = "content_rcmd"
+    case tag_rcmd = "tag_rcmd"
+    case entrance = "entrance"
+    case web = "web"
 }
 
 enum TogetherRefreshType {
@@ -39,40 +46,35 @@ enum TogetherDislikeType: Int {
     case noInterest = 1
 }
 
-enum LivePartitionType: Int {
-    case recommend
-    case entertainment
-    case PCGame
-    case mobileGame
-    case draw
-    case attention = 666
-    case beauty = 999
+enum LiveModuleType: Int {
+    case banner = 1
+    case region = 2
+    case attention = 13
+    case recommed = 3
+    case hourRank = 4
+    case battlegrounds = 22  //绝地求生
+    case KingGlory = 24 //王者荣耀
+    case PCGame = 5
+    case fivePeople = 21 //第五人格
+    case mobileGame = 6
+    case videoSong = 20 //视频唱见
+    case enterment = 7
+    case draw = 8
 }
 
-extension LivePartitionType {
-    
-    var title: String {
+extension LiveModuleType {
+    var showCount: Int {
         switch self {
-        case .recommend:
-            return "推荐"
-        case .entertainment:
-            return "娱乐"
-        case .PCGame:
-            return "游戏"
-        case .mobileGame:
-            return "手游"
-        case .draw:
-            return "绘画"
-        case .beauty:
-            return "颜值"
-        case .attention:
-            return "关注"
+        case .recommed:
+            return 6
+        default:
+            return 4
         }
     }
+    
 }
 
 enum LiveAllSubType: String {
-    case suggestion = "推荐直播"
     case hottest = "最热直播"
     case latest = "最新开播"
     case roundroom = "视频轮播"
@@ -82,8 +84,6 @@ extension LiveAllSubType {
     
     var title: String {
         switch self {
-        case .suggestion:
-            return "suggestion"
         case .hottest:
             return "hottest"
         case .latest:
@@ -94,30 +94,10 @@ extension LiveAllSubType {
     }
 }
 
-enum DramaSectionType: Int {
-    case mine
-    case drama
-    case country
-    case review
-    case edit
-}
-
-extension DramaSectionType {
-    
-    var title: String {
-        switch self {
-        case .mine:
-            return "我的追番"
-        case .drama:
-            return "番剧推荐"
-        case .country:
-            return "国产动画推荐"
-        case .review:
-            return "点评推荐"
-        case .edit:
-            return "编辑推荐"
-        }
-    }
+enum DramaVerticalPosition: Int {
+    case left = 0
+    case middle
+    case right
 }
 
 enum RankRegionType:Int {

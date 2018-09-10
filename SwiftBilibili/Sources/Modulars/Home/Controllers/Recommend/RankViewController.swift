@@ -13,7 +13,7 @@ final class RankViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isEmptyDisplay = false
-        self.hideAnimationView(self.tableView)
+        //self.hideAnimationView(self.tableView)
         
     }
 

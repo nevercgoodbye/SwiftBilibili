@@ -94,7 +94,7 @@ final class TogetherSectionDelegate: SectionDelegateType {
         case .ad(let cellReactor):
             return cellReactor.currentState.cellSize
         case .av(let cellReactor):
-            return cellReactor.currentState.cellSize
+            return Reusable.avCell.class.size(reactor: cellReactor)
         case .live(let cellReactor):
             return cellReactor.currentState.cellSize
         case .article(let cellReactor):

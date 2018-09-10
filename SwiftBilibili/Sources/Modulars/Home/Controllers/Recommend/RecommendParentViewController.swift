@@ -24,7 +24,6 @@ final class RecommendParentViewController: BaseViewController {
         $0.magicView.needPreloading = false
         $0.magicView.itemSpacing = 28
         $0.magicView.isSeparatorHidden = true
-        
     }
     
     private let rightItemView = RecommendRightItemView.loadFromNib().then{

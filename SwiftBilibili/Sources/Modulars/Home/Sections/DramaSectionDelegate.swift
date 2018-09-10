@@ -40,12 +40,12 @@ final class DramaSectionDelegate: SectionDelegateType {
                 cell.reactor = cellReactor
             }
             return cell
-        case let .review(cellReactor):
-            let cell = collectionView.dequeue(Reusable.reviewCell, for: indexPath)
-            if cell.reactor !== cellReactor {
-                cell.reactor = cellReactor
-            }
-            return cell
+//        case let .review(cellReactor):
+//            let cell = collectionView.dequeue(Reusable.reviewCell, for: indexPath)
+//            if cell.reactor !== cellReactor {
+//                cell.reactor = cellReactor
+//            }
+//            return cell
         case let .vertical(cellReactor):
             let cell = collectionView.dequeue(Reusable.verticalCell, for: indexPath)
             if cell.reactor !== cellReactor {
@@ -66,7 +66,7 @@ final class DramaSectionDelegate: SectionDelegateType {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
-            view.reloadData(headerModel: section.headerModel,sectionCount:sectionCount)
+            view.reloadData(headerModel: section.headerModel,sectionCount:sectionCount, currentSection: indexPath.section)
             return view
         default:
             return collectionView.emptyView(for: indexPath, kind: kind)
@@ -82,8 +82,8 @@ final class DramaSectionDelegate: SectionDelegateType {
         switch sectionItem {
         case .edit(let cellReactor):
             return Reusable.editCell.class.size(reactor: cellReactor)
-        case .review(let cellReactor):
-            return Reusable.reviewCell.class.size(reactor: cellReactor)
+//        case .review(let cellReactor):
+//            return Reusable.reviewCell.class.size(reactor: cellReactor)
         case .vertical(let cellReactor):
             return Reusable.verticalCell.class.size(reactor: cellReactor)
         }
@@ -91,27 +91,14 @@ final class DramaSectionDelegate: SectionDelegateType {
     
     func headerSize(
         collectionView: UICollectionView,
-        section: DramaViewSection,
-        sectionCount: Int
+        section: Int
         ) -> CGSize {
         
-        let type = section.headerModel!.type
-        
-        var height = 75.f
-        
-        if type == .edit {
-            height = 60
-        }else if type == .drama {
-            if sectionCount == 5 {
-                height = 75
-            }else{
-                height = 330
-            }
-        }else if type == .mine {
-            height = 190
+        if section == 0 {
+            return CGSize(width: kScreenWidth, height: 300)
+        }else{
+            return CGSize(width: kScreenWidth, height: 40)
         }
-        
-        return CGSize(width: kScreenWidth, height: height)
     }
     
 }

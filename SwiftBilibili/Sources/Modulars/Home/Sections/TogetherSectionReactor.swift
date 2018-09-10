@@ -51,10 +51,10 @@ final class TogetherSectionReactor: SectionReactor {
                     sectionItems.append(.ad(TogetherAdCellReactor(together: togetherModel)))
                 case .live:
                     sectionItems.append(.live(TogetherLiveCellReactor(together: togetherModel)))
-                case .article:
+                case .article_rcmd:
                     sectionItems.append(.article(TogetherArticleCellReactor(together: togetherModel)))
                 case .banner:
-                    sectionItems.append(.banner(TogetherBannerCellReactor(together: togetherModel)))
+                    sectionItems.append(.banner(TogetherBannerCellReactor(banners: togetherModel.banner_item ?? [])))
                 case .special_s:
                     sectionItems.append(.special(TogetherSpecialCellReactor(together: togetherModel)))
                 default:break

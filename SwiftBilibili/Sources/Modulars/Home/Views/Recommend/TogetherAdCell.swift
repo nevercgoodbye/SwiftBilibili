@@ -52,8 +52,8 @@ final class TogetherAdCell: TogetherParentCell,View {
         
         let placeholderSize = CGSize(width: reactor.currentState.cellSize.width, height: Metric.coverImageViewHeight)
         reactor.state.map{$0.coverURL}
-                    .bind(to: coverImageView.rx.image(placeholder: .placeholderImage(bgSize:placeholderSize)))
-                    .disposed(by: disposeBag)
+            .bind(to: coverImageView.rx.image(placeholder: .placeholderImage(bgSize:placeholderSize)))
+            .disposed(by: disposeBag)
         reactor.state.map{$0.title}
             .filterNil()
             .distinctUntilChanged()

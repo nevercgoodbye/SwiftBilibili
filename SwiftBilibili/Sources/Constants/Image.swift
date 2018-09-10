@@ -31,12 +31,13 @@ struct Image {
         static let search_rec = UIImage(named: "home_search_rec")
         static let search_live = UIImage(named: "home_search_live")
         static let downArrow = UIImage(named: "home_downArrow")
-        static let rightArrow = UIImage(named: "home_rightArrow")
+        static let rightArrow = UIImage(named: "home_right_arrow")
         static let rank = UIImage(named: "home_rank")
         static let tag = UIImage(named: "home_tag")
         static let shadow = UIImage(named: "home_shadow")
         static let dislike = UIImage(named: "home_dislike")
-        static let play = UIImage(named: "home_play")
+        static let playTime = UIImage(named: "home_playTime")
+        static let play = UIImage(named: "home_player_play")
         static let danmakus = UIImage(named: "home_danmakus")
         static let favorite = UIImage(named: "home_favorite")
         static let default_img = UIImage(named: "default_img")
@@ -56,7 +57,17 @@ struct Image {
         static let smallLogin = UIImage(named: "home_smallLogin")
         static let bigLogin = UIImage(named: "home_bigLogin")
         static let noDrama = UIImage(named: "home_noDrama")
-        static let home_avatar = UIImage(named: "home_avatar")
+        static let avatar = UIImage(named: "home_avatar")
+        static let region_game = UIImage(named: "home_region_game")
+        static let region_mobile = UIImage(named: "home_region_mobile")
+        static let region_enterment = UIImage(named: "home_region_enterment")
+        static let region_common = UIImage(named: "home_region_common")
     }
+    
+    struct Article {
+        static let more = UIImage(named: "article_more")
+    }
+    
+    
     
 }

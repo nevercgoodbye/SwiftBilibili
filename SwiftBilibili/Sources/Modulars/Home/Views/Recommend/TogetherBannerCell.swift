@@ -20,6 +20,7 @@ final class TogetherBannerCell: BaseCollectionViewCell,View {
     
     override func initialize() {
         
+        self.backgroundColor = UIColor.clear
         contentView.addSubview(bannerView)
     }
     

@@ -80,7 +80,7 @@ target ‘SwiftBilibili’ do
   pod 'SwiftyImage'
   pod 'SwiftTimer'
   pod 'SwiftDate'
-  pod 'SwiftyUserDefaults'
+  pod 'SwiftyUserDefaults', '4.0.0-alpha.1'
   pod 'CGFloatLiteral'
   pod 'Dollar'
 

@@ -47,7 +47,8 @@ final class SplashViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        //View controller-based status bar appearance
+        UIApplication.shared.isStatusBarHidden = true
         view.addSubview(backgroundImageView)
         backgroundImageView.addSubview(splashImageView)
     }

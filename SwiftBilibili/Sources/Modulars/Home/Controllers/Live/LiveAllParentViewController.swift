@@ -14,7 +14,7 @@ final class LiveAllParentViewController: BaseViewController {
 
     private let service: HomeServiceType
     
-    private let regions: [LiveAllSubType] = [.suggestion,.hottest,.latest,.roundroom]
+    private let regions: [LiveAllSubType] = [.hottest,.latest,.roundroom]
     
     private var idxs: [Int: LiveAllViewController] = [:]
     
@@ -51,13 +51,13 @@ final class LiveAllParentViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.title = "全部直播"
         
+        self.title = "全部直播"
         self.addChildViewController(pageController)
         self.view.addSubview(pageController.view)
         pageController.magicView.dataSource = self
@@ -89,7 +89,8 @@ extension LiveAllParentViewController: VTMagicViewDataSource {
     func magicView(_ magicView: VTMagicView, viewControllerAtPage pageIndex: UInt) -> UIViewController {
         
         if !idxs.keys.contains(Int(pageIndex)) {
-            let allController = LiveAllViewController(service:service,subType:regions[Int(pageIndex)])
+            let reactor = LiveAllViewReactor(homeService: service,subType: regions[Int(pageIndex)])
+            let allController = LiveAllViewController(reactor: reactor)
             idxs.updateValue(allController, forKey: Int(pageIndex))
             return allController
         }

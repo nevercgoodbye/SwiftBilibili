@@ -15,9 +15,32 @@ final class TogetherAdView: UIView,NibLoadable {
     
     @IBOutlet weak var countDownButton: CountDownButton!
     
-    @IBOutlet weak var titleButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var arrowImageView: UIImageView!
+    
+    @IBOutlet weak var shadowImageView: UIImageView!
     
     private var uri: String = ""
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        arrowImageView.image = Image.Home.rightArrow?.with(color: UIColor.db_white)
+        titleLabel.textColor = UIColor.db_white
+        
+        shadowImageView.rx.tapGesture().subscribe(onNext: {[unowned self] (_) in
+            
+            if !self.uri.isEmpty {
+                self.removeFromSuperview()
+                
+                DispatchQueue.delay(time: 0.25) {[unowned self] in
+                    BilibiliRouter.push(self.uri)
+                }
+            }
+        }).disposed(by: rx.disposeBag)
+    }
     
     func startCountDown(adModel:ListRealmModel) {
         
@@ -28,7 +51,7 @@ final class TogetherAdView: UIView,NibLoadable {
             make.edges.equalToSuperview()
         })
         self.AdImageView.image = ImageManager.retrieveImage(key:adModel.thumb)
-        self.titleButton.setTitle(adModel.uri_title, for: .normal)
+        self.titleLabel.text = adModel.uri_title
         
         let title = NSMutableAttributedString(string:"跳过 \(adModel.duration)")
         title.setAttributes([.foregroundColor:UIColor.db_pink], range: NSRange(location: title.length - 1, length: 1))
@@ -36,6 +59,7 @@ final class TogetherAdView: UIView,NibLoadable {
         self.countDownButton.setAttributedTitle(title, for: .normal)
         self.countDownButton.countDownButtonClick { (sender) in
             self.removeFromSuperview()
+            UIApplication.shared.isStatusBarHidden = false
         }
         self.countDownButton.startCountDownWithSecond(totalSecond: adModel.duration)
         self.countDownButton.countDownChanging { (_, second) -> NSAttributedString in
@@ -45,22 +69,9 @@ final class TogetherAdView: UIView,NibLoadable {
         }
         self.countDownButton.countDownFinished { (_, _) -> NSAttributedString in
             self.removeFromSuperview()
+            UIApplication.shared.isStatusBarHidden = false
             return NSAttributedString(string:"")
         }
-        
-    }
-    
-    @IBAction func titleButtonClick(_ sender: UIButton) {
-        
-        if !self.uri.isEmpty {
-            self.removeFromSuperview()
-            
-            DispatchQueue.delay(time: 0.25) {[unowned self] in
-                BilibiliRouter.push(self.uri)
-            }
-        }
-        
-        
     }
     
 }

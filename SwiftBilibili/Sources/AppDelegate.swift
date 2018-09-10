@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.dependency.configureAppearance()
         self.dependency.configureUserAgent()
         self.dependency.congigurePerformance()
+        
         return true
     }
 

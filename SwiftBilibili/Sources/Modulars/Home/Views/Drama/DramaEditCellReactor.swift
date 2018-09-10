@@ -21,13 +21,13 @@ final class DramaEditCellReactor: Reactor {
     
     let initialState: State
     
-    let foot: DramaFootModel
+    let foot: DramaItemModel
     
-    init(foot: DramaFootModel) {
+    init(foot: DramaItemModel) {
         
         self.foot = foot
         
-        let coverURL = URL(string: foot.cover)
+        let coverURL = URL(string: foot.cover ?? "")
         
         var isNew = false
         
@@ -36,8 +36,8 @@ final class DramaEditCellReactor: Reactor {
         }
         
         self.initialState = State(coverURL: coverURL,
-                                  title: foot.title,
-                                  des: foot.desc,
+                                  title: foot.title ?? "",
+                                  des: foot.desc ?? "",
                                   isNew:isNew)
         _ = self.state
     }

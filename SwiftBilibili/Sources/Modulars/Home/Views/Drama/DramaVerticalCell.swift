@@ -37,6 +37,7 @@ final class DramaVerticalCell: BaseCollectionViewCell,View {
         $0.titleLabel?.font = Font.SysFont.sys_10
         $0.isUserInteractionEnabled = false
         $0.contentEdgeInsets = UIEdgeInsetsMake(3, 3, 3, 3)
+        
     }
     
     let favouriteLabel = UILabel().then{
@@ -128,9 +129,10 @@ final class DramaVerticalCell: BaseCollectionViewCell,View {
     
     class func size(reactor: DramaVerticalCellReactor) -> CGSize {
         
-        let cellWidth = (kScreenWidth - 4*kCollectionItemPadding)/3
+        let cellWidth = kScreenWidth/3.f
         
-        var cellHeight: CGFloat = Metric.coverImageViewHeight
+        var cellHeight: CGFloat = kCollectionItemPadding
+        cellHeight += Metric.coverImageViewHeight
         cellHeight += Metric.titleLabelTop
         cellHeight += Metric.titleLabelMaxHeight
         cellHeight += Metric.latestUpdateLabelTop
@@ -147,8 +149,10 @@ final class DramaVerticalCell: BaseCollectionViewCell,View {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        coverImageView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+        coverImageView.snp.remakeConstraints { (make) in
+            make.top.equalTo(kCollectionItemPadding)
+            make.left.equalTo(reactor!.currentState.leftMargin)
+            make.right.equalTo(-reactor!.currentState.rightMargin)
             make.height.equalTo(Metric.coverImageViewHeight)
         }
         
@@ -167,24 +171,26 @@ final class DramaVerticalCell: BaseCollectionViewCell,View {
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
+            make.left.right.equalTo(coverImageView)
             make.height.lessThanOrEqualTo(Metric.titleLabelMaxHeight)
             make.top.equalTo(coverImageView.snp.bottom).offset(Metric.titleLabelTop)
         }
         
         latestUpdateLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(Metric.latestUpdateLabelTop)
-            make.left.right.equalToSuperview()
+            make.left.right.equalTo(coverImageView)
             make.height.equalTo(Metric.latestUpdateLabelHeight)
         }
         
         watchProgressLabel.snp.makeConstraints { (make) in
             make.top.equalTo(latestUpdateLabel.snp.bottom).offset(Metric.latestUpdateLabelTop)
-            make.left.right.equalToSuperview()
+            make.left.right.equalTo(coverImageView)
             make.height.equalTo(Metric.latestUpdateLabelHeight)
         }
         
-        //badgeButton.clipRectCorner(direction: .bottomLeft, cornerRadius: kCornerRadius)
+        if badgeButton.bounds != .zero {
+            badgeButton.clipRectCorner(direction: [.bottomLeft,.topRight], cornerRadius: kCornerRadius)
+        }
     }
     
     

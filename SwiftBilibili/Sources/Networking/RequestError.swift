@@ -44,19 +44,26 @@ enum StatusCode: Int {
 
 extension Single {
     
-    func handleError(showText:String = "似乎与互联网断开连接",bottomOffset:CGFloat = kToastBottomCenterSpace) -> Single<Element> {
+    func handleError(_ element: Element? = nil,
+                     showText:String = "似乎与互联网断开连接",
+                     bottomOffset:CGFloat = kToastBottomCenterSpace
+        ) -> Single<Element> {
         
-      return self.asObservable().do(onError: { (error) in
-            if error is RequestError {
-                BilibiliToaster.show((error as! RequestError).errorDescription)
-            }else{
-                BilibiliToaster.show(showText,bottomOffsetPortrait:bottomOffset)
-            }
-        }).asSingle()
+        if let element = element {
+            
+            return self.asObservable().catchErrorJustReturn(element).asSingle()
+           
+        }else {
+            return self.asObservable().do(onError: { (error) in
+                if error is RequestError {
+                    BilibiliToaster.show((error as! RequestError).errorDescription)
+                }else{
+                    BilibiliToaster.show(showText,bottomOffsetPortrait:bottomOffset)
+                }
+            }).asSingle()
+            
+        }
     }
-    
-    
-    
 }
 
 

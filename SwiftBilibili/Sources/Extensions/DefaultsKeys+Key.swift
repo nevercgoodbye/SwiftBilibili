@@ -8,38 +8,15 @@
 
 import SwiftyUserDefaults
 
-typealias CategoryNames = [Int]
-typealias Idx = String
-typealias Environment = NetEnvironment
-
 extension DefaultsKeys {
     
-    static let openTimes = DefaultsKey<Int>("openTimes")
-    
-    static let liveCategoryNames = DefaultsKey<CategoryNames>("liveCategoryNames")
+    static let openTimes = DefaultsKey<Int>("openTimes", defaultValue: 0)
 
-    static let avIdx = DefaultsKey<Idx>("avIdx")
+    static let avIdx = DefaultsKey<String>("avIdx",defaultValue:"0")
     
-    static let isLogin = DefaultsKey<Bool>("isLogin")
+    static let isLogin = DefaultsKey<Bool>("isLogin",defaultValue:false)
     
-    static let avater = DefaultsKey<Data>("avater")
+    static let avater = DefaultsKey<Data>("avater", defaultValue: Data())
     
-    static let currentEnvironment = DefaultsKey<Environment>("currentEnvironment")
-}
-
-extension UserDefaults {
-    subscript(key: DefaultsKey<CategoryNames>) -> CategoryNames {
-        get { return unarchive(key) ?? [666,1,2,3,4]}
-        set { archive(key, newValue) }
-    }
-    
-    subscript(key: DefaultsKey<Idx>) -> Idx {
-        get { return unarchive(key) ?? "0"}
-        set { archive(key, newValue) }
-    }
-    
-    subscript(key: DefaultsKey<Environment>) -> Environment {
-        get { return unarchive(key) ?? .res}
-        set { archive(key, newValue) }
-    }
+    static let currentEnvironment = DefaultsKey<NetEnvironment>("currentEnvironment", defaultValue: .res)
 }

@@ -11,107 +11,123 @@ import UIKit
 import ReusableKit
 import RxSwift
 import RxCocoa
+import RxDataSources
+import ReactorKit
 
-final class LiveAllViewController: BaseCollectionViewController,OutputRefreshProtocol {
+final class LiveAllViewController: BaseCollectionViewController,View {
 
     private struct Reusable {
         static let avCell = ReusableCell<LiveAvCell>()
         static let roundRoomCell = ReusableCell<LiveRoundRoomCell>()
     }
-
-    var refreshStatus: BehaviorRelay<BilibiliRefreshStatus> = BehaviorRelay(value: .none)
     
-    private let service: HomeServiceType
-    private var dataSources: [LiveRecommendAvModel] = []
-    private let subType: LiveAllSubType
+    let dataSource: RxCollectionViewSectionedReloadDataSource<LiveAllViewSection>
     
-    init(service: HomeServiceType,subType:LiveAllSubType) {
-        
-        self.service = service
-        self.subType = subType
-        
-        super.init()
-        
+    init(reactor: LiveAllViewReactor) {
+       defer { self.reactor = reactor }
+       self.dataSource = type(of: self).dataSourceFactory()
+       super.init()
+       collectionView.register(Reusable.avCell)
+       collectionView.register(Reusable.roundRoomCell)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private static func dataSourceFactory()
+        -> RxCollectionViewSectionedReloadDataSource<LiveAllViewSection> {
+            
+            return .init(configureCell: { (dataSource, collectionView, indexPath, sectionItem) -> UICollectionViewCell in
+                switch sectionItem {
+                case .av(let cellReactor):
+                    let cell = collectionView.dequeue(Reusable.avCell, for: indexPath)
+                    cell.reactor = cellReactor
+                    return cell
+                case .roundRoom(let cellReactor):
+                    let cell = collectionView.dequeue(Reusable.roundRoomCell, for: indexPath)
+                    cell.reactor = cellReactor
+                    return cell
+                }
+            })
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(Reusable.avCell)
-        collectionView.register(Reusable.roundRoomCell)
-        collectionView.dataSource = self
-        collectionView.delegate = self
         isEmptyDisplay = false
         
         setupRefreshHeader(collectionView) {[unowned self] in
-            self.netRequest()
+            self.reactor?.action.onNext(.refresh)
         }
         
-        self.autoSetRefreshStatus(header: collectionView.header).disposed(by: disposeBag)
+        reactor?.autoSetRefreshStatus(header: collectionView.header).disposed(by: disposeBag)
         
-        netRequest()
     }
     
-    private func netRequest() {
+    func bind(reactor: LiveAllViewReactor) {
         
-        service.liveAll(subType: subType)
-            .asObservable()
-            .subscribe(onNext: {[weak self] (models) in
-                guard let `self` = self else { return }
-                self.hideAnimationView(self.collectionView)
-                self.refreshStatus.accept(.endHeaderRefresh)
-                self.dataSources = models
-                self.isEmptyDisplay = true
-                self.collectionView.reloadData()
-            })
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        self.rx.viewDidLoad
+            .map{Reactor.Action.refresh}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.isReachedBottom
+            .map{Reactor.Action.loadMore}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map{$0.sections}
+            .filterNil()
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
-    
 }
 
-extension LiveAllViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-            let model = dataSources[indexPath.item]
-            
-            if subType == .roundroom {
-                let cell = collectionView.dequeue(Reusable.roundRoomCell, for: indexPath)
-                let reactor = LiveRoundRoomCellReactor(live: LivePartitionAvModel(recommendAvModel: model))
-                cell.reactor = reactor
-                return cell
-            }else{
-                let cell = collectionView.dequeue(Reusable.avCell, for: indexPath)
-                let reactor = LiveAvCellReactor(live: LivePartitionAvModel(recommendAvModel: model))
-                cell.reactor = reactor
-                return cell
-            }
-    }
-}
+
 
 extension LiveAllViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return  UIEdgeInsets(top: kCollectionItemPadding, left: kCollectionItemPadding, bottom: 0, right: kCollectionItemPadding)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let height = subType == .roundroom ? 160.f : kLiveItemHeight
-        return CGSize(width: (kScreenWidth - 3*kCollectionItemPadding)/2, height: height)
+        return CGSize(width: kScreenWidth/2, height: kLiveItemHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return kCollectionItemPadding
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
+
+
+enum LiveAllViewSection {
+    case all([LiveAllViewSectionItem])
+}
+
+enum LiveAllViewSectionItem {
+    case av(LiveAvCellReactor)
+    case roundRoom(LiveRoundRoomCellReactor)
+}
+
+extension LiveAllViewSection: SectionModelType {
+    
+    var items:[LiveAllViewSectionItem] {
+        switch self {
+        case .all(let items): return items
+        }
+    }
+    
+    init(original: LiveAllViewSection, items: [LiveAllViewSectionItem]) {
+        switch original {
+        case .all : self = .all(items)
+        }
+    }
+}
+
+

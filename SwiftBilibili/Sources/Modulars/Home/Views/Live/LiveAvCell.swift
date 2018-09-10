@@ -13,15 +13,9 @@ import URLNavigator
 
 final class LiveAvCell: BaseCollectionViewCell,View {
     
-    // MARK: UI
-    private let backgroundImageView = UIImageView().then{
-        $0.cornerRadius = kCornerRadius
-        $0.backgroundColor = .db_white
-        $0.isUserInteractionEnabled = true
-    }
-    
     private let coverImageView = UIImageView().then{
         $0.isUserInteractionEnabled = true
+        $0.cornerRadius = kCornerRadius
     }
     
     private let shadowImageView = UIImageView().then{
@@ -37,8 +31,8 @@ final class LiveAvCell: BaseCollectionViewCell,View {
         $0.setTitleColor(.db_white, for: .normal)
         $0.titleLabel?.font = Font.SysFont.sys_10
         $0.isUserInteractionEnabled = false
-        $0.setImage(Image.Home.play, for: .normal)
-        $0.contentHorizontalAlignment = .right
+        $0.setImage(Image.Home.playTime, for: .normal)
+        //$0.contentHorizontalAlignment = .right
         $0.space = 5
         $0.imagePosition = .left
         $0.imageSize = CGSize(width: 12, height: 12)
@@ -54,17 +48,11 @@ final class LiveAvCell: BaseCollectionViewCell,View {
         $0.textColor = .db_lightGray
     }
     
-    private let smallWindowButton = UIButton().then{
-        $0.setBackgroundImage(Image.Home.dislike, for: .normal)
-    }
-    
     // MARK: Initializing
     override func initialize() {
-        contentView.addSubview(backgroundImageView)
-        backgroundImageView.addSubview(coverImageView)
-        backgroundImageView.addSubview(liveTitleLabel)
-        backgroundImageView.addSubview(categoryLabel)
-        backgroundImageView.addSubview(smallWindowButton)
+        contentView.addSubview(coverImageView)
+        contentView.addSubview(liveTitleLabel)
+        contentView.addSubview(categoryLabel)
         coverImageView.addSubview(shadowImageView)
         shadowImageView.addSubview(anchorNameLabel)
         shadowImageView.addSubview(onlinesButton)
@@ -73,7 +61,7 @@ final class LiveAvCell: BaseCollectionViewCell,View {
     // MARK: Configuring
     func bind(reactor: LiveAvCellReactor) {
         
-        let placeholderSize = CGSize(width: self.width, height: self.height * 2/3)
+        let placeholderSize = CGSize(width: self.width, height: kLiveItemHeight*0.6)
         reactor.state.map{$0.coverURL}
             .bind(to: coverImageView.rx.image(placeholder: .placeholderImage(bgSize:placeholderSize)))
             .disposed(by: disposeBag)
@@ -96,18 +84,6 @@ final class LiveAvCell: BaseCollectionViewCell,View {
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: disposeBag)
-        
-        smallWindowButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
-            
-            let popOverView = TogetherDislikePopOverView()
-            popOverView.settings.overView.viewWidth = kDislikeViewMinWidth
-            popOverView.addAction(Action(ActionData(title: "小窗播放", image: Image.Home.noInterest),handler:{ action in
-                
-                
-            }))
-            popOverView.show(pointView: self.smallWindowButton)
-            
-        }).disposed(by: disposeBag)
     }
     
     // MARK: Size
@@ -115,16 +91,22 @@ final class LiveAvCell: BaseCollectionViewCell,View {
     // MARK: Layout
     override func layoutSubviews() {
         super.layoutSubviews()
-    
-        setShadow()
-        
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        coverImageView.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
-            make.height.equalTo(kLiveItemHeight * 2 / 3)
+
+        if reactor!.live.isLeft {
+            coverImageView.snp.remakeConstraints { (make) in
+                make.top.equalTo(10)
+                make.left.equalTo(kCollectionItemPadding)
+                make.right.equalTo(-kCollectionItemPadding/2)
+                make.height.equalTo(kLiveItemHeight*0.6)
+            }
+        }else{
+            coverImageView.snp.remakeConstraints { (make) in
+                make.top.equalTo(10)
+                make.left.equalTo(kCollectionItemPadding/2)
+                make.right.equalTo(-kCollectionItemPadding)
+                make.height.equalTo(kLiveItemHeight*0.6)
+            }
+            
         }
         
         shadowImageView.snp.makeConstraints { (make) in
@@ -132,38 +114,27 @@ final class LiveAvCell: BaseCollectionViewCell,View {
             make.height.equalTo(kShadowImageHeight)
         }
         
+        onlinesButton.snp.makeConstraints { (make) in
+            make.right.equalTo(-5)
+            make.bottom.equalTo(-5)
+        }
+        
         anchorNameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(10)
             make.bottom.equalTo(onlinesButton)
-            make.width.equalTo(90)
+            make.right.equalTo(onlinesButton.snp.left).offset(-10)
             make.height.equalTo(onlinesButton.snp.height)
         }
         
-        onlinesButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-10)
-            make.bottom.equalTo(-5)
-            make.height.equalTo(12)
-            make.left.equalTo(anchorNameLabel.snp.right).offset(10)
-        }
-        
         liveTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
+            make.left.right.equalTo(coverImageView)
             make.top.equalTo(coverImageView.snp.bottom).offset(5)
-            make.right.equalTo(-10)
             make.height.equalTo(20)
         }
         
-        smallWindowButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-5)
-            make.bottom.equalTo(-5)
-            make.height.equalTo(25)
-            make.width.equalTo(20)
-        }
-        
         categoryLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(liveTitleLabel)
-            make.right.equalTo(smallWindowButton.snp.left).offset(-10)
-            make.centerY.equalTo(smallWindowButton)
+            make.left.right.equalTo(coverImageView)
+            make.top.equalTo(liveTitleLabel.snp.bottom).offset(5)
         }
     }
     

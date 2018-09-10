@@ -16,9 +16,13 @@ class TogetherParentCell: BaseCollectionViewCell {
     
     private var togetherModel: RecommendTogetherModel?
     
-    let coverImageView = UIImageView().then{
-        $0.isUserInteractionEnabled = false
+    let backgroundImageView = UIImageView().then{
+        $0.isUserInteractionEnabled = true
+        $0.backgroundColor = UIColor.db_white
+        $0.cornerRadius = kCornerRadius
     }
+    
+    let coverImageView = UIImageView()
     
     let longPressShadowView = UIView().then{
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.05)
@@ -46,11 +50,12 @@ class TogetherParentCell: BaseCollectionViewCell {
     let dislikeMaskView = TogetherDislikeMaskView.loadFromNib()
     
     override func initialize() {
-        contentView.backgroundColor = .white
-        contentView.addSubview(coverImageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(descLabel)
-        contentView.addSubview(dislikeButton)
+        self.backgroundColor = UIColor.clear
+        contentView.addSubview(backgroundImageView)
+        backgroundImageView.addSubview(coverImageView)
+        backgroundImageView.addSubview(titleLabel)
+        backgroundImageView.addSubview(descLabel)
+        backgroundImageView.addSubview(dislikeButton)
     }
     
     
@@ -195,7 +200,9 @@ class TogetherParentCell: BaseCollectionViewCell {
         
         setShadow()
         
-        contentView.clipRectCorner(direction: .allCorners, cornerRadius: kCornerRadius)
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         
         coverImageView.snp.remakeConstraints { (make) in
             make.left.right.top.equalToSuperview()
@@ -218,7 +225,7 @@ class TogetherParentCell: BaseCollectionViewCell {
         dislikeButton.snp.makeConstraints { (make) in
             make.right.equalTo(-5)
             make.bottom.equalTo(-5)
-            make.height.equalTo(25)
+            make.height.equalTo(20)
             make.width.equalTo(20)
         }
     }

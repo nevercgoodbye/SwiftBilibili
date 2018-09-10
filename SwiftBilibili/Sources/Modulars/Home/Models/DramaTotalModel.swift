@@ -19,6 +19,12 @@ struct DramaMineModel: ImmutableMappable {
         update_count = try map.value("update_count")
         follows = try map.value("follows")
     }
+    
+    init() {
+        self.follow_count = 0
+        self.update_count = 0
+        self.follows = []
+    }
 }
 
 struct DramaFollowModel: ImmutableMappable {
@@ -43,6 +49,8 @@ struct DramaFollowModel: ImmutableMappable {
     var version: String
     var weekday: String
     var user_season: DramaUserSeasonModel
+    
+    var position: DramaVerticalPosition = .left
     
     init(map: Map) throws {
         ban_area_show = try map.value("ban_area_show")
@@ -86,24 +94,6 @@ struct DramaUserSeasonModel: ImmutableMappable {
         report_ts = try map.value("report_ts")
     }
     
-}
-
-struct DramaPageModel: ModelType {
-    
-    enum Event {}
-
-    var recommend_cn: DramaCnModel
-    var recommend_jp: DramaCnModel
-    var recommend_review: [DramaReviewModel]
-    var timeline: [DramaTimelineModel]
-    
-    init(map: Map) throws {
-        recommend_cn = try map.value("recommend_cn")
-        timeline = try map.value("timeline")
-        recommend_review = try map.value("recommend_review")
-        recommend_jp = try map.value("recommend_jp")
-        
-    }
 }
 
 struct DramaCnModel: ImmutableMappable {
@@ -165,6 +155,7 @@ struct DramaRecommendModel:ImmutableMappable {
     var wid: Int?
     var tags: [DramaTagModel]?
 
+    var position: DramaVerticalPosition = .left
     
     init(map: Map) throws {
         brief = try? map.value("brief")
@@ -228,7 +219,6 @@ struct DramaLikeModel:ImmutableMappable {
     var url: String
     var user_season: DramaUserSeasonModel
 
-    
     init(map: Map) throws {
         badge = try? map.value("badge")
         alias = try map.value("alias")
@@ -374,17 +364,106 @@ struct DramaMediaModel: ImmutableMappable {
     }
 }
 
-struct DramaHeaderModel {
-    var icon: UIImage?
-    var name: String
-    var type: DramaSectionType
+struct DramaPageModel: ImmutableMappable {
     
-    init(icon:UIImage?,name:String,type:DramaSectionType) {
-        self.icon = icon
-        self.name = name
-        self.type = type
+    var modules: [DramaModuleModel]
+    var regions: [DramaRegionModel]
+    
+    init(map: Map) throws {
+        modules = try map.value("modules")
+        regions = try map.value("regions")
     }
 }
 
+struct DramaRegionModel: ImmutableMappable {
+
+    var icon: String?
+    var url: String?
+    var title: String?
+    
+    init(map: Map) throws {
+        icon = try? map.value("icon")
+        url = try? map.value("url")
+        title = try? map.value("title")
+    }
+}
+
+struct DramaModuleModel: ImmutableMappable {
+    
+    var headers: [DramaHeaderModel]?
+    var items: [DramaItemModel]
+    var module_id: Int?
+    var size: Int?
+    var style: String?
+    var title: String?
+    
+    init(map: Map) throws {
+        headers = try? map.value("headers")
+        items = try map.value("items")
+        module_id = try? map.value("module_id")
+        size = try? map.value("size")
+        style = try? map.value("style")
+        title = try? map.value("title")
+    }
+}
+
+struct DramaHeaderModel: ImmutableMappable {
+    var title: String?
+    var url: String?
+    
+    //配合UI使用
+    var name: String?
+    
+    init(map: Map) throws {
+        title = try? map.value("title")
+        url = try? map.value("url")
+    }
+
+}
+
+struct DramaItemModel: ImmutableMappable {
+    var badge: String?
+    var badge_type: Int?
+    var cover: String?
+    var desc: String?
+    var cursor: String?
+    var is_auto: Int?
+    var is_new: Int?
+    var link: String?
+    var season_id: Int?
+    var title: String?
+    var stat: DramaStatModel?
+    
+    //配合UI使用
+    var position: DramaVerticalPosition = .left
+    
+    init(map: Map) throws {
+        title = try? map.value("title")
+        badge = try? map.value("badge")
+        badge_type = try? map.value("badge_type")
+        cover = try? map.value("cover")
+        desc = try? map.value("desc")
+        is_auto = try? map.value("is_auto")
+        is_new = try? map.value("is_new")
+        link = try? map.value("link")
+        season_id = try? map.value("season_id")
+        stat = try? map.value("stat")
+        cursor = try? map.value("cursor")
+    }
+}
+
+struct DramaStatModel: ImmutableMappable {
+
+    var danmaku: String?
+    var follow: String?
+    var view: String?
+
+    
+    init(map: Map) throws {
+        danmaku = try? map.value("danmaku", using: NumberTransform())
+        follow = try? map.value("follow", using: NumberTransform())
+        view = try? map.value("view", using: NumberTransform())
+    }
+}
 
 

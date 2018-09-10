@@ -5,7 +5,6 @@
 //  Created by 罗文 on 2018/1/17.
 //  Copyright © 2018年 罗文. All rights reserved.
 //
-
 import ReactorKit
 
 final class TogetherAvCellReactor: Reactor {
@@ -21,7 +20,7 @@ final class TogetherAvCellReactor: Reactor {
         var desc: String?
         var rcmdColor: UIColor?
         var rcmdTitle: String?
-        var cellSize: CGSize
+        var hiddenDislike: Bool
     }
     
     let initialState: State
@@ -54,9 +53,25 @@ final class TogetherAvCellReactor: Reactor {
                                   desc: desc,
                                   rcmdColor: rcmdColor,
                                   rcmdTitle: rcmdTitle,
-                                  cellSize: CGSize(width: (kScreenWidth - 3*kCollectionItemPadding)/2, height: kNormalItemHeight))
+                                  hiddenDislike:false)
+        _ = self.state
+    }
+    
+    init(branch:BranchAvModel) {
+        
+        self.together = RecommendTogetherModel(isShowTip: false)
+        
+        let coverURL = URL(string: branch.cover ?? "")
+        
+        self.initialState = State(coverURL: coverURL,
+                                  title: branch.title,
+                                  playTimes: branch.play,
+                                  danmakus: branch.danmaku,
+                                  duration: branch.duration,
+                                  desc: branch.tname,
+                                  rcmdColor: nil,
+                                  rcmdTitle: nil,
+                                  hiddenDislike:true)
         _ = self.state
     }
 }
-    
-

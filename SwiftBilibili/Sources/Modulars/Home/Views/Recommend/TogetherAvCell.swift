@@ -36,7 +36,7 @@ final class TogetherAvCell: TogetherParentCell,View {
         $0.titleLabel?.font = Font.SysFont.sys_10
         $0.isUserInteractionEnabled = false
         $0.contentHorizontalAlignment = .left
-        $0.setImage(Image.Home.play, for: .normal)
+        $0.setImage(Image.Home.playTime, for: .normal)
         $0.imagePosition = .left
         $0.imageSize = CGSize(width: Metric.playTimesButtonHeight, height: Metric.playTimesButtonHeight)
     }
@@ -73,9 +73,13 @@ final class TogetherAvCell: TogetherParentCell,View {
         contentView.addSubview(playTimeLabel)
     }
     
+    class func size(reactor:TogetherAvCellReactor) -> CGSize {
+        return CGSize(width: (kScreenWidth - 3*kCollectionItemPadding)/2, height: kNormalItemHeight)
+    }
+    
     func bind(reactor: TogetherAvCellReactor) {
         
-        let placeholderSize = CGSize(width: reactor.currentState.cellSize.width, height: reactor.currentState.cellSize.height * 0.6)
+        let placeholderSize = CGSize(width: (kScreenWidth - 3*kCollectionItemPadding)/2, height: kNormalItemHeight * 0.6)
 
         reactor.state.map{$0.coverURL}
             .bind(to: coverImageView.rx.image(placeholder: .placeholderImage(bgSize:placeholderSize)))
@@ -135,6 +139,10 @@ final class TogetherAvCell: TogetherParentCell,View {
         reactor.state.map{$0.danmakus == nil}
             .distinctUntilChanged()
             .bind(to: danmakusButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        reactor.state.map{$0.hiddenDislike}
+            .distinctUntilChanged()
+            .bind(to: dislikeButton.rx.isHidden)
             .disposed(by: disposeBag)
         
         reactor.state.map { _ in }

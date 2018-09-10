@@ -52,14 +52,12 @@ struct RecommendTogetherModel: ModelType {
     var banner_url: String?
     var count: Int?
     var tags: [TogetherTagModel]?
+    
     //配合UI使用
     var isShowTip: Bool = false
-    var size: CGSize = .zero
-    
     var isDislike: Bool = false
     var dislikeName: String?
     var dislikeRecordTime: Date?
-    
     var isSetWatchLater: Bool = false
     
     init(map: Map) throws {
@@ -183,30 +181,30 @@ struct TogetherChildrenModel: ImmutableMappable {
 
 struct TogetherBannerModel: ImmutableMappable {
     
-    var cm_mark: Int
-    var hash: String
-    var server_type: Int
-    var id: Int
-    var resource_id: Int
+    var cm_mark: Int?
+    var hash: String?
+    var server_type: Int?
+    var id: Int?
+    var resource_id: Int?
     var is_ad: Bool?
     var is_ad_loc: Bool?
-    var title: String
-    var image: String
-    var request_id: String
-    var uri: String
-    var index: Int
+    var title: String?
+    var image: String?
+    var request_id: String?
+    var uri: String?
+    var index: Int?
     
     init(map: Map) throws {
-        cm_mark = try map.value("cm_mark")
-        hash = try map.value("hash")
-        server_type = try map.value("server_type")
-        id = try map.value("id")
-        resource_id = try map.value("resource_id")
-        title = try map.value("title")
-        image = try map.value("image")
-        request_id = try map.value("request_id")
-        uri = try map.value("uri")
-        index = try map.value("index")
+        cm_mark = try? map.value("cm_mark")
+        hash = try? map.value("hash")
+        server_type = try? map.value("server_type")
+        id = try? map.value("id")
+        resource_id = try? map.value("resource_id")
+        title = try? map.value("title")
+        image = try? map.value("image")
+        request_id = try? map.value("request_id")
+        uri = try? map.value("uri")
+        index = try? map.value("index")
         is_ad = try? map.value("is_ad")
         is_ad_loc = try? map.value("is_ad_loc")
     }

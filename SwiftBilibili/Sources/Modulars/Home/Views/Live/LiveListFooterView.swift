@@ -8,54 +8,55 @@
 
 import UIKit
 
-final class LiveListFooterView: UICollectionReusableView {
 
-    var partitionType: LivePartitionType?
+final class LiveListFooterView: UICollectionReusableView {
     
-    @IBOutlet weak var switchButton: BilibiliButton!
+    @IBOutlet weak var checkMoreButton: BilibiliButton!
     @IBOutlet weak var allLiveButton: UIButton!
     @IBOutlet weak var allLiveView: UIView!
+    
+    private var headerModel: LiveHeaderModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        switchButton.setTitleColor(.db_pink, for: .normal)
+        checkMoreButton.setTitleColor(.db_pink, for: .normal)
+        checkMoreButton.setImage(Image.Home.rightArrow?.with(color: .db_pink), for: .normal)
+        
+        allLiveView.backgroundColor = UIColor.db_gray
         
         allLiveButton.setTitleColor(UIColor.db_darkGray, for: .normal)
+        allLiveButton.borderColor = UIColor.db_darkGray
+        allLiveButton.borderWidth = 0.5
+        allLiveButton.cornerRadius = 3
         
-        switchButton.imagePosition = .right
-        switchButton.space = 5
-        switchButton.imageSize = CGSize(width: 10, height: 10)
+        checkMoreButton.imagePosition = .right
+        checkMoreButton.space = 0
         
-        NotificationCenter.default.rx.notification(custom: .stopRotate)
-            .subscribe(onNext: {[unowned self] (_) in
+        checkMoreButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
             
-             guard let refreshImageView = self.switchButton.imageView else { return }
-             refreshImageView.layer.removeAllAnimations()
+            BilibiliRouter.open(self.headerModel?.link ?? "")
+        
+        }).disposed(by: rx.disposeBag)
+        
+        allLiveButton.rx.tap.subscribe(onNext: { (_) in
+            
+            BilibiliRouter.push(.live_all)
             
         }).disposed(by: rx.disposeBag)
         
     }
     
-    
-    @IBAction func startSwitch(_ sender: UIButton) {
+    func reloadData(headerModel:LiveHeaderModel?){
         
-        guard let refreshImageView = switchButton.imageView,
-              let partitionType = partitionType
-        else { return }
+        self.headerModel = headerModel
         
-        refreshImageView.layer.removeAllAnimations()
+        guard let headerModel = headerModel else { return }
         
-        let rotaAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotaAnimation.toValue = CGFloat.pi * 4
-        rotaAnimation.repeatCount = 10
-        rotaAnimation.duration = CFTimeInterval(kLivePartitionRefreshRotationTime)
-        refreshImageView.layer.add(rotaAnimation, forKey: "rotaanimation")
-        
-        if partitionType == .recommend {
-            LiveTotalModel.event.onNext(.refreshRecommendPartition)
+        if headerModel.count != nil {
+            checkMoreButton.setTitle("更多\(headerModel.count!)个推荐直播", for: .normal)
         }else{
-            LiveTotalModel.event.onNext(.refreshCommonPartition(partitionType))
+            checkMoreButton.setTitle("查看更多", for: .normal)
         }
     }
 }

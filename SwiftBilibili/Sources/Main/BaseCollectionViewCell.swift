@@ -20,6 +20,8 @@ class BaseCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.backgroundColor = UIColor.db_white
+        
         initialize()
     }
     

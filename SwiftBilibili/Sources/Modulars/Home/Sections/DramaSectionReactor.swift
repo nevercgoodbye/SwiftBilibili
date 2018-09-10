@@ -10,13 +10,14 @@ import UIKit
 
 import SectionReactor
 import RxSwift
+import Dollar
+
 
 final class DramaSectionReactor: SectionReactor {
 
     enum SectionItem {
-        case review(DramaReviewCellReactor)
-        case edit(DramaEditCellReactor)
         case vertical(DramaVerticalCellReactor)
+        case edit(DramaEditCellReactor)
     }
     
     enum Action {}
@@ -29,44 +30,24 @@ final class DramaSectionReactor: SectionReactor {
     
     let initialState: State
     
-    init(followModels:[DramaFollowModel]? = nil,
-         cnModel:DramaCnModel? = nil,
-         reviewModels:[DramaReviewModel]? = nil,
-         footModels:[DramaFootModel]? = nil) {
+    init(moduleModel:DramaModuleModel) {
         
         defer { _ = self.state }
         
         var sectionItems: [SectionItem] = []
         
-        if let followModels = followModels {
-            for follow in followModels {
-               sectionItems.append(.vertical(DramaVerticalCellReactor(follow: follow)))
+        let resultItems = Dollar.chunk(moduleModel.items, size: 3)[0]
+        
+        if let headers = moduleModel.headers,!headers.isEmpty {
+            for i in 0..<resultItems.count {
+                var model = moduleModel.items[i]
+                model.position = DramaVerticalPosition(rawValue: i)!
+                sectionItems.append(.vertical(DramaVerticalCellReactor(recommend: model)))
             }
+        }else{
+             sectionItems = resultItems.map{.edit(DramaEditCellReactor(foot: $0))}
         }
         
-        if let cnModel = cnModel {
-            for recommend in cnModel.recommend {
-                sectionItems.append(.vertical(DramaVerticalCellReactor(recommend: recommend)))
-            }
-            
-            for foot in cnModel.foot {
-                sectionItems.append(.edit(DramaEditCellReactor(foot: foot)))
-            }
-        }
-        
-        if let reviewModels = reviewModels {
-            
-            for review in reviewModels {
-                sectionItems.append(.review(DramaReviewCellReactor(review: review)))
-            }
-        }
-        
-        if let footModels = footModels {
-            for foot in footModels {
-                sectionItems.append(.edit(DramaEditCellReactor(foot: foot)))
-            }
-        }
-
         self.initialState = State(sectionItems: sectionItems)
     }
     

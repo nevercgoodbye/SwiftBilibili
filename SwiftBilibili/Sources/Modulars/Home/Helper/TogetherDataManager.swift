@@ -40,7 +40,6 @@ class TogetherDataManager {
                 }
             }
         }
-        
     }
     
     class func refreshDataForVTMagic(_ viewController: UIViewController?,
@@ -66,7 +65,6 @@ class TogetherDataManager {
                     }
                 }
             }
-            
         }else if viewController is LiveListViewController {
             
             if isForceRefresh {
@@ -76,4 +74,8 @@ class TogetherDataManager {
             }
         }
     }
+    
+    
+    
+    
 }

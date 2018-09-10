@@ -13,7 +13,6 @@ import RxDataSources
 import RxSwift
 import URLNavigator
 
-
 final class TogetherViewController: BaseCollectionViewController,View {
 
     // MARK: Properties
@@ -64,6 +63,7 @@ final class TogetherViewController: BaseCollectionViewController,View {
         
         super.viewDidLoad()
         
+        
         self.collectionView.enableDirection = true
         
         setupRefreshHeader(collectionView) {[unowned self] in
@@ -71,8 +71,6 @@ final class TogetherViewController: BaseCollectionViewController,View {
         }
         
         reactor?.autoSetRefreshStatus(header: collectionView.header).disposed(by: disposeBag)
-        
-        
     }
     
     //MARK: Parent Method
@@ -116,12 +114,10 @@ final class TogetherViewController: BaseCollectionViewController,View {
                    self.startRefresh()
                 case let .ad(cellReactor):
                    BilibiliRouter.push(cellReactor.together.uri ?? "")
-                case .av(let cellReactor):
-                    log.info(cellReactor.together.uri ?? "")
-                    let testVc = TestViewController()
-                    self.navigationController?.pushViewController(testVc, animated: true)
+                case .av:
+                   BilibiliRouter.push(BilibiliPushType.recommend_player)
                 case .article(let cellReactor):
-                    BilibiliRouter.push(cellReactor.together.uri ?? "")
+                   BilibiliRouter.push(cellReactor.together.uri ?? "")
                 default:break
                 }
             }
@@ -151,8 +147,10 @@ final class TogetherViewController: BaseCollectionViewController,View {
         
         reactor.state.map{$0.adModel}
             .filterNil()
+            .single()
             .distinctUntilChanged()
             .subscribe(onNext: {[unowned self] (adModel) in
+                UIApplication.shared.isStatusBarHidden = true
                 self.adView.startCountDown(adModel: adModel)
             })
             .disposed(by: disposeBag)
@@ -213,7 +211,7 @@ extension TogetherViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return  UIEdgeInsets(top: kCollectionItemPadding, left: kCollectionItemPadding, bottom: kCollectionItemPadding, right: kCollectionItemPadding)
+        return  UIEdgeInsets(top: 0, left: kCollectionItemPadding, bottom: kCollectionItemPadding, right: kCollectionItemPadding)
     }
     
     

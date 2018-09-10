@@ -20,17 +20,17 @@ final class LiveRoundRoomCellReactor: Reactor {
     
     let initialState: State
     
-    init(live: LivePartitionAvModel) {
+    let live: LiveAvModel
+    
+    init(live: LiveAvModel) {
         
-        let coverURL = URL(string: live.face)
+        let coverURL = URL(string: live.cover ?? "")
+        
+        self.live = live
         
         self.initialState = State(coverURL: coverURL,
-                                  anchorName: live.uname,
-                                  liveTitle: live.title)
+                                  anchorName: live.uname ?? "",
+                                  liveTitle: live.title ?? "")
         _ = self.state
     }
-    
-    
-    
-    
 }

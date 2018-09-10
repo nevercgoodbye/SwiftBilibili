@@ -10,13 +10,17 @@ import UIKit
 
 final class LivePartitionViewController: BaseViewController {
 
-    private var partitionType: LivePartitionType
-    private var name: String
+    private var parent_area_id: String
+    private var parent_area_name: String
+    private var area_id: String
+    private var area_name: String
     
-    init(partitionType:LivePartitionType,name:String) {
+    init(parent_area_id:String,parent_area_name: String,area_id: String,area_name: String) {
         
-        self.partitionType = partitionType
-        self.name = name
+        self.parent_area_id = parent_area_id
+        self.parent_area_name = parent_area_name
+        self.area_id = area_id
+        self.area_name = area_name
         
         super.init()
     }
@@ -35,7 +39,7 @@ final class LivePartitionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = name
+        self.title = self.parent_area_name
     }
 
 

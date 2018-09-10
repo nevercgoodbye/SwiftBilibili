@@ -15,6 +15,7 @@ extension UIColor {
     class var db_gray: UIColor { return UIColor(244,244,244) }
     class var db_lightGray: UIColor { return UIColor(210,210,210) }
     class var db_darkGray: UIColor { return UIColor(150,150,150) }
-    class var db_black: UIColor { return UIColor(63,63,63) }
+    class var db_black: UIColor { return UIColor(38,38,38) }
+    class var db_lightBlack: UIColor { return UIColor(63,63,63) }
     class var db_orange: UIColor { return UIColor(231,157,105) }
 }

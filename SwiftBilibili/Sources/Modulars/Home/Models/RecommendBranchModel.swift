@@ -28,3 +28,4 @@ struct BranchTabModel: ImmutableMappable {
     }
     
 }
+

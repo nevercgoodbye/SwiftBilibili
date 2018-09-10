@@ -21,11 +21,12 @@ final class TogetherBannerCellReactor: Reactor {
     
     let initialState: State
     
-    init(together: RecommendTogetherModel) {
+    init(banners: [TogetherBannerModel]) {
         
-        let banners = together.banner_item!.map{BilibiliBannerModel(imageUrl: $0.image, title: $0.title, link: $0.uri, isAd: $0.is_ad ?? false)}
+        let models = banners.map{BilibiliBannerModel(imageUrl: $0.image ?? "", title: $0.title ?? "", link: $0.uri ?? "", isAd: $0.is_ad ?? false)}
 
-        self.initialState = State(banners: banners,cellSize:CGSize(width: kScreenWidth-2*kCollectionItemPadding, height: kBannerHeight))
+        self.initialState = State(banners: models,cellSize:CGSize(width: kScreenWidth-2*kCollectionItemPadding, height: kBannerHeight))
         _ = self.state
     }
+    
 }

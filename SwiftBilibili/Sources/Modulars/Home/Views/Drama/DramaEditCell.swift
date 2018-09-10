@@ -14,11 +14,11 @@ final class DramaEditCell: BaseCollectionViewCell,View {
     
     private struct Metric {
         static let coverImageViewHeight = 100.f
-        static let titleLabelTop = 10.f
+        static let titleLabelTop = 8.f
         static let titleLabelLeft = 15.f
         static let titleLabelHeight = 16.f
         static let titleLabelRight = -15.f
-        static let descLabelTop = 10.f
+        static let descLabelTop = 8.f
         static let descLabelHeight = 12.f
     }
     
@@ -34,10 +34,6 @@ final class DramaEditCell: BaseCollectionViewCell,View {
         $0.image = Image.Home.new
     }
     
-    let bottomView = UIView().then{
-        $0.backgroundColor = UIColor.db_gray
-    }
-    
     let titleLabel = UILabel().then{
         $0.textColor = UIColor.db_black
         $0.font = Font.SysFont.sys_14
@@ -46,15 +42,15 @@ final class DramaEditCell: BaseCollectionViewCell,View {
     let descLabel = UILabel().then{
         $0.textColor = UIColor.db_darkGray
         $0.font = Font.SysFont.sys_12
+        $0.numberOfLines = 0
     }
     
     override func initialize() {
         contentView.addSubview(backgroundImageView)
         backgroundImageView.addSubview(coverImageView)
-        backgroundImageView.addSubview(bottomView)
         coverImageView.addSubview(newImageView)
-        bottomView.addSubview(titleLabel)
-        bottomView.addSubview(descLabel)
+        backgroundImageView.addSubview(titleLabel)
+        backgroundImageView.addSubview(descLabel)
     }
     
     func bind(reactor: DramaEditCellReactor) {
@@ -91,12 +87,13 @@ final class DramaEditCell: BaseCollectionViewCell,View {
         cellHeight += Metric.titleLabelHeight
         cellHeight += Metric.descLabelTop
         
-        if let _ = reactor.currentState.des {
-            cellHeight += Metric.descLabelHeight
+        if let des = reactor.currentState.des {
             cellHeight += Metric.descLabelTop
+            cellHeight += des.height(thatFitsWidth: kScreenWidth-2*kCollectionItemPadding - 2*Metric.titleLabelLeft, font: Font.SysFont.sys_12)
+            
         }
         
-        return CGSize(width: kScreenWidth - 2*kCollectionItemPadding, height: cellHeight)
+        return CGSize(width: kScreenWidth, height: cellHeight)
     }
     
     
@@ -104,7 +101,9 @@ final class DramaEditCell: BaseCollectionViewCell,View {
         super.layoutSubviews()
         
         backgroundImageView.snp.makeConstraints { (make) in
-            make.edges.equalTo(0)
+            make.top.bottom.equalToSuperview()
+            make.left.equalTo(kCollectionItemPadding)
+            make.right.equalTo(-kCollectionItemPadding)
         }
         
         coverImageView.snp.makeConstraints { (make) in
@@ -117,16 +116,9 @@ final class DramaEditCell: BaseCollectionViewCell,View {
             make.right.equalTo(-20)
         }
         
-        bottomView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(coverImageView.snp.bottom)
-            
-        }
-        
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(Metric.titleLabelLeft)
-            make.top.equalTo(Metric.titleLabelTop)
-            make.right.equalTo(Metric.titleLabelRight)
+            make.left.right.equalToSuperview()
+            make.top.equalTo(coverImageView.snp.bottom).offset(Metric.titleLabelTop)
             make.height.equalTo(Metric.titleLabelHeight)
         }
         
@@ -134,7 +126,6 @@ final class DramaEditCell: BaseCollectionViewCell,View {
             make.left.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(Metric.descLabelTop)
             make.right.equalTo(titleLabel)
-            make.height.equalTo(Metric.descLabelHeight)
         }
     }
 }

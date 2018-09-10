@@ -14,42 +14,33 @@ final class URLNavigationMap {
     
     static func initialize(navigator:NavigatorType) {
         
-        navigator.register(BilibiliPushType.recommend_rank.registerPath) { (url, values, context) -> UIViewController? in
+        navigator.register(BilibiliPushType.recommend_rank.path) { (url, values, context) -> UIViewController? in
             
             guard let context = context as? [String:Bool],
                   let isRcmd = context["isFromRcmd"]
-                else { return nil }
+            else { return nil }
             
             let rankParentVc = RankParentViewController()
             
             return rankParentVc
         }
         
-        navigator.register(BilibiliPushType.live_beauty.registerPath) { (url, values, context) -> UIViewController? in
-            let reactor = LiveBeautyViewReactor(service: HomeService(networking: HomeNetworking()))
-            let beautyViewController = LiveBeautyViewController(reactor: reactor)
-            return beautyViewController
-        }
-        
-        navigator.register(BilibiliPushType.live_room.registerPath) { (url, values, context) -> UIViewController? in
+        navigator.register(BilibiliPushType.live_room.path) { (url, values, context) -> UIViewController? in
             let roomViewController = LiveRoomViewController()
             return roomViewController
         }
         
-        navigator.register(BilibiliPushType.live_recommend.registerPath) { (url, values, context) -> UIViewController? in
+        navigator.register(BilibiliPushType.live_all.path) { (url, values, context) -> UIViewController? in
             let rcmdParentVc = LiveAllParentViewController(service:HomeService(networking: HomeNetworking()))
             return rcmdParentVc
         }
         
-        navigator.register(BilibiliPushType.live_partition(id: 0).registerPath) { (url, values, context) -> UIViewController? in
-            guard let partitionId = values["id"] as? Int,
-                  let partitionType = LivePartitionType(rawValue: partitionId)
-            else { return nil }
-            let partitionVc = LivePartitionViewController(partitionType: partitionType, name:partitionType.title)
-            return partitionVc
+        navigator.register(BilibiliPushType.recommend_player.path) { (url, values, context) -> UIViewController? in
+            let testVc = TestViewController()
+            return testVc
         }
         
-        navigator.register(BilibiliPushType.drama_recommend.registerPath) { (url, values, context) -> UIViewController? in
+        navigator.register(BilibiliPushType.drama_recommend.path) { (url, values, context) -> UIViewController? in
             
             guard let context = context as? [String:Bool],
                   let isRcmd = context["isRcmd"]
@@ -60,9 +51,10 @@ final class URLNavigationMap {
             return rcmdVc
         }
         
-        
         navigator.register("http://<path:_>",self.webViewControllerFactory)
         navigator.register("https://<path:_>",self.webViewControllerFactory)
+        navigator.handle(BilibiliOpenType.area.rawValue, self.area(navigator: navigator))
+        navigator.handle(BilibiliOpenType.all.rawValue, self.all(navigator: navigator))
         navigator.handle(BilibiliOpenType.login.rawValue, self.login(navigator: navigator))
     }
     
@@ -71,18 +63,50 @@ final class URLNavigationMap {
         values: [String: Any],
         context: Any?
         ) -> UIViewController? {
-        return BilibiliWebViewController(link: url.urlStringValue)
+        
+        let link = url.urlStringValue
+        
+        if link.contains("read") {
+            return BilibiliArticleViewController(link: link)
+        }else{
+            return BilibiliWebViewController(link: url.urlStringValue)
+        }
+    }
+    
+    private static func area(navigator: NavigatorType) -> URLOpenHandlerFactory {
+        return { url, values, context in
+
+            let parent_area_id = url.queryParameters["parent_area_id"]!
+            let parent_area_name = url.queryParameters["parent_area_name"]!
+            let area_id = url.queryParameters["area_id"]!
+            let area_name = url.queryParameters["area_name"]!
+            
+            let partitionController = LivePartitionViewController(parent_area_id: parent_area_id,
+                                                                  parent_area_name: parent_area_name,
+                                                                  area_id: area_id,
+                                                                  area_name: area_name)
+            navigator.push(partitionController)
+            return true
+        }
+    }
+    
+    private static func all(navigator: NavigatorType) -> URLOpenHandlerFactory {
+        return { url, values, context in
+            
+            let allParentVc = LiveAllParentViewController(service: HomeService(networking: HomeNetworking()))
+            navigator.push(allParentVc)
+            return true
+        }
     }
     
     private static func login(navigator: NavigatorType) -> URLOpenHandlerFactory {
         return { url, values, context in
-
+            
             let loginController = LoginViewController()
-            
             navigator.present(loginController, wrap: MainNavigationController.self)
-            
             return true
         }
     }
+    
 }
 

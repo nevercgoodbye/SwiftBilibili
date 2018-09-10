@@ -8,36 +8,25 @@
 
 import RxDataSources
 
-struct LiveListViewSection {
-    var banners: [LiveListBannerModel]?
-    var header: LivePartitionHeaderModel?
-    var starShows: [LiveStarShowModel]?
-    var items: [LiveListViewSectionItem]
-    
-    init(items: [LiveListViewSectionItem],banners: [LiveListBannerModel]? = nil,header: LivePartitionHeaderModel? = nil,starShows: [LiveStarShowModel]? = nil) {
-        
-        self.banners = banners
-        
-        self.header = header
-        
-        self.starShows = starShows
-        
-        self.items = items
-    }
-    
+enum LiveListViewSection {
+    case live(LiveListSectionReactor)
 }
 
 extension LiveListViewSection: SectionModelType {
+
+    var items: [LiveListViewSectionItem] {
+        switch self {
+        case let .live(sectionReactor):
+            return sectionReactor.currentState.sectionItems.map{LiveListViewSectionItem.liveElement(sectionReactor, $0)}
+        }
+    }
     
     init(original: LiveListViewSection, items: [LiveListViewSectionItem]) {
-        
-        self = original
-        
-        self.items = items
+        self = original 
     }
 }
 
 enum LiveListViewSectionItem {
-  case live(LiveListSectionReactor.SectionItem)
+    case liveElement(LiveListSectionReactor, LiveListSectionReactor.SectionItem)
 }
 
